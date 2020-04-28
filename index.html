@@ -31,7 +31,7 @@
                 <h5 class="card-title">Felpa Tradizionale</h5>
                 <p class="card-text">breve descrizione felpa tradizionale</p>
                 <p class="card-text" style="text-align: end; font-size: 35px;">20€</p>
-                <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi()">Aggiungi al carrello</button>
+                <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale', '20')">Aggiungi al carrello</button>
               </div>
             </div>
         </div>
@@ -43,29 +43,22 @@
               <h5 class="card-title">Borraccia</h5>
               <p class="card-text">breve descrizione borraccia</p>
               <p class="card-text" style="text-align: end; font-size: 35px;">Gratis</p>
-              <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi()">Aggiungi al carrello</button>
+              <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Borraccia', 'Gratis')">Aggiungi al carrello</button>
             </div>
           </div>
         </div>
     </div>
 
-    <div class="container" style="background-color: #f5f3f3;">
+    <div class="container" style="background-color: #f5f3f3; text-align: center; font-size: 20px;" id="carrello">
       <div class="row">
-        <div class="col-10" style="text-align: center;">
+        <div class="col-10" style="font-size: 25px;">
           Oggetto
         </div>
-        <div class="col" style="text-align: center;">
+        <div class="col" style="font-size: 25px;">
           Costo
         </div>
       </div>
-      <div class="row">
-        <div class="col-10" style="text-align: center;">
-          Totale
-        </div>
-        <div class="col" style="text-align: center;">
-          <!--emo' che scrivo-->
-        </div>
-      </div>
+      
     </div>
 
 
@@ -75,6 +68,8 @@
         </div>
     </footer>
 
+
+    <script src="scripts.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
