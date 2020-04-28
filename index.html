@@ -4,77 +4,51 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <title>Felpe Ariosto Spallanzani</title>
   </head>
-  <body>
+  <body style="background: #f2e4d8;">
     <ul class="nav justify-content-center">
         <li class="nav-item">
           <a class="nav-link disabled" href="#" aria-disabled="true" style="font-size:30px"><i>LICEO ARIOSTO SPALLANZANI</i></a>
         </li>
     </ul>
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid" style="background:#ffa052">
         <div class="container" style="text-align: center;">
           <h1 class="display-4" >Sito per ordinare le felpe della scuola</h1>
-          <p class="lead">Il tuo ordine verrà registrato e la felpa consegnata da un fattorino, <b>pagamento alla consegna</b></p>
-          <a type="button" class="btn btn-primary" href="./form.html" style="text-align: center;">Cart</a>	
+          <h2 class="lead">Il tuo ordine verrà registrato e la felpa consegnata da un fattorino, <b>pagamento alla consegna</b></h2>
+          <h3 class="lead">Controlla ciò che stai comprando in fondo alla pagina e conferma cliccando sul bottone qui sotto</h3>
+          <p></p>
+          <a type="button" class="btn btn-danger" href="./form.html" style="text-align: center;">Conferma Acquisto</a>	
         </div>
     </div>
 
     <div class="row row-cols-1 row-cols-md-2" style="margin: 40px;">
         <div class="col mb-4">
-            <div class="card">
+            <div class="card" style="background:#ffa052">
               <img src="./Images/Tradizionale.jpg" class="card-img-top" alt="immagine_felpa_tradizionale">
               <div class="card-body">
                 <h5 class="card-title">Felpa Tradizionale</h5>
                 <p class="card-text">breve descrizione felpa tradizionale</p>
-                <p class="card-text" style="text-align: end;">20€</p>
-				<div class="container">
-				  <div class="row justify-content-end">
-				    <div class="col-md-3 ml-md-auto">
-						<button type="button" class="btn btn-primary" class="addCart" style="text-align: right;">add to cart</button>	
-					</div>
-				  </div>
-				</div> 
+                <p class="card-text" style="text-align: end; font-size: 35px;">20€</p>
+                <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale', '20')">Aggiungi al carrello</button>
               </div>
             </div>
         </div>
+        
         <div class="col mb-4">
-          <div class="card">
+          <div class="card" style="background:#ffa052">
             <img src="./Images/Borraccia.jpg" class="card-img-top" alt="immagine_borraccia">
             <div class="card-body">
               <h5 class="card-title">Borraccia</h5>
               <p class="card-text">breve descrizione borraccia</p>
-<<<<<<< Updated upstream
-              <p class="card-text" style="text-align: end;">Gratis</p>
-              	<div class="container">
-				  <div class="row justify-content-end">
-				    <div class="col-4">
-						<button type="button" class="btn btn-primary" class="addCart" style="text-align: right;">add to cart</button>	
-					</div>
-				  </div>
-				</div>
-=======
-              <div>
-                <button type="button" class="btn btn-primary btn-lg" style="background-color:black"></button>
-              </div>
               <p class="card-text" style="text-align: end; font-size: 35px;">Gratis</p>
               <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Borraccia', 'Gratis')">Aggiungi al carrello</button>
->>>>>>> Stashed changes
             </div>
           </div>
         </div>
     </div>
-	<footer class="page-footer font-small blue pt-4">
-		<div class="footer-copyright text-center py-3">© 2020 Copyright:
-    		<a href="https://www.liceoariostospallanzani-re.edu.it/"> Liceo Ariosto Spallanzani</a>
-  		</div>
-	</footer>
 
-
-<<<<<<< Updated upstream
-=======
     <div class="container" style="background-color: #f5f3f3; text-align: center; font-size: 20px;" id="carrello">
       <div class="row">
         <div class="col-10" style="font-size: 25px;">
@@ -83,13 +57,19 @@
         <div class="col" style="font-size: 25px;">
           Costo
         </div>
-      </div>      
+      </div>
+      
     </div>
->>>>>>> Stashed changes
 
 
+    <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+          <a href="https://www.liceoariostospallanzani-re.edu.it/"> Liceo Ariosto Spallanzani</a>
+        </div>
+    </footer>
 
 
+    <script src="scripts.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
