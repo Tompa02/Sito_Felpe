@@ -92,10 +92,10 @@ const SEND  = function (){
     download(JSON.stringify(scontrino), 'scontrino.txt', 'text/plain');
     fetch("/register_order", {
         method: "POST", 
-        body: JSON.stringify(data)
+        body: JSON.stringify(scontrino)
       }).then(res => {
         // visualizza errori o tutto ok
-      });
+      })
 }
 
 
