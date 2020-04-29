@@ -47,7 +47,7 @@ const Aggiungi = function (name, costo = 10) {
     }
 
     if(name==='Borraccia' || name==="Annuario"){
-        borracce+=1
+        name==='Borraccia' ? borracce+=1 : borracce=borracce
         row.setAttribute('class', 'row')
         row.setAttribute('id', numofrow)
         thing.setAttribute('class', 'col-9')

@@ -12,7 +12,7 @@
           <a class="nav-link disabled" href="#" aria-disabled="true" style="font-size:30px"><i>LICEO ARIOSTO SPALLANZANI</i></a>
         </li>
     </ul>
-
+    <!--se credi di poter hackerare il sito e mettere zero come paga, nel caso tu ci riesca buon per te ma verrai preso a calci, nel secondo, più probabile caso, verrai preso in giro-->
     <div class="jumbotron jumbotron-fluid" style="background:#ffa052">
         <div class="container" style="text-align: center;">
           <h1 class="display-4" >Sito per ordinare le felpe della scuola</h1>
@@ -44,7 +44,7 @@
                 <option>XL</option>
               </select>
               <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
-              <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale')">Aggiungi al carrello</button>
+              <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale', 20)">Aggiungi al carrello</button>
             </div>
           </div>
       </div>
@@ -69,7 +69,7 @@
               <option>XL</option>
             </select>
             <p class="card-text" style="text-align: end; font-size: 30px;">15€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Maglietta')">Aggiungi al carrello</button>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Maglietta', 15)">Aggiungi al carrello</button>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
             <p class="card-text">breve descrizione borraccia</p>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: black;" onclick="CambiaColore('./Images/borraccia.jpg', 'borr')"></button>
             <p class="card-text" style="text-align: end; font-size: 30px;">0€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Borraccia')">Aggiungi al carrello</button>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Borraccia', 0)">Aggiungi al carrello</button>
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@
             <p class="card-text">breve descrizione annuario</p>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: green;"></button>
             <p class="card-text" style="text-align: end; font-size: 30px;">5€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Annuario')">Aggiungi al carrello</button>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Annuario',5)">Aggiungi al carrello</button>
           </div>
         </div>
       </div>
