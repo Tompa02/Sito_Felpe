@@ -43,7 +43,6 @@ const Aggiungi = function (name, costo = 10) {
 
         final.cart.push([name, GetColor(color), taglia])
         numofrow+=1
-        console.log(final.cart)
     }
 
     if(name==='Borraccia' || name==="Annuario"){
@@ -76,7 +75,6 @@ const Aggiungi = function (name, costo = 10) {
 
         final.cart.push([name, GetColor(color)])
         numofrow+=1
-        console.log(final.cart)
     }
 }
 
@@ -120,6 +118,13 @@ const SEND = function (){
     }).then(res => {
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
+            let scontrino = {
+                id : final.id,
+                Nome: final.Nome,
+                Cognome : final.Cognome,
+                cart : final.cart,
+                cost : final.cost
+            }
             download(JSON.stringify(scontrino), 'scontrino.txt', 'text/plain')
         } else if (res.status == 700) {
             alert('C\'è stato un errore durante la registrazione dell \'ordine')
@@ -133,9 +138,19 @@ const SAVE = function (){
         alert("Hai preso troppe borracce")
         return 0
     }
-    let but = document.getElementById('goform')
-    but.href = './form.html'
-    final.cost+=2
+    fetch("/sending_cart", {
+        method: "POST", 
+        body: JSON.stringify(final),
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
+    }).then(res => {
+        if (res.status == 200) {
+            let but = document.getElementById('goform')
+            but.href = './form.html'
+        } else if (res.status == 700) {
+            alert('C\'è stato un errore durante la registrazione dell \'ordine')
+        }
+    })
+    
 }
 
 const RESTORE = function(){
