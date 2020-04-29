@@ -8,7 +8,13 @@ server.use(express.static(path.join(__dirname, 'public')));
 
 server.use(parser.json())
 
-server.use('/register_order', function(req, res, next) {
+server.get('/', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.sendFile(__dirname + '/public/index.html');
+})
+
+const verify = function(req, res, next) {
+    console.log(req.body)
     const order = req.body
     if(order.Email===null||order.Nome===null||order.Cognome===null||
         order.Indirizzo===null||order.Comune===null||
@@ -18,14 +24,9 @@ server.use('/register_order', function(req, res, next) {
             //
         }
     next()
-})
+}
 
-server.get('/', (req, res) => {
-    res.setHeader('Content-Type', 'text/html');
-    res.sendFile(__dirname + '/public/index.html');
-})
-
-server.post('/register_order', (req, res) => {
+server.post('/register_order', verify, (req, res) => {
     res.send('POST request for order')
 })
 

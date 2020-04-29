@@ -91,13 +91,11 @@ const SEND = function (){
         cost : final.cost
     }
 
-    console.log(scontrino)
-
     fetch("/register_order", {
         method: "POST", 
         body: JSON.stringify(final),
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
-    }).then(res => {console.log(res)})
+    }).then(res => {})
 }
 
 
