@@ -9,6 +9,9 @@ server.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 })
 
-server.post('/register_order', (req, res) => {})
-
+server.post('/register_order', (req, res) => {if(final.Email===null||final.Nome===null||final.Cognome===null||
+        final.Indirizzo===null||final.Comune===null||
+        final.CAP===null||final.Sede===null||
+        final.Sezione===null||final.Classe===null||
+        final.cart===null||final.cost===null){console.log("sei un coglione")}
 server.listen(8080)
