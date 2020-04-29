@@ -24,7 +24,7 @@ const Aggiungi = function (name, costo) {
     cost.setAttribute('class', 'col')
     remover.setAttribute('class', 'col')
     butt.setAttribute('class', 'btn btn-danger')
-    butt.setAttribute('onclick', 'Remove('+numofrow+','+costo+')')
+    butt.setAttribute('onclick', 'Remove('+numofrow+','+costo+','+'\''+name+'\''+')')
 
     let text = document.createTextNode(name)
     let num = document.createTextNode(costo)
@@ -94,17 +94,16 @@ const SEND  = function (){
 
 
 const SAVE = function (){
-    final.cost+=2
     if(!(controllo())){
         alert("Hai preso troppe borracce")
         return 0
     }
     let but = document.getElementById('goform')
     but.href = './form.html'
+    final.cost+=2
 }
 
 const RESTORE = function(){
-    
 }
 
 const CambiaColore = function (newimage, name){
@@ -113,12 +112,22 @@ const CambiaColore = function (newimage, name){
 }
 
 
-const Remove = function (num, costo){
+const Remove = function (num, costo, name){
     let torem = document.getElementById(num)
     const index = num-1
+
+    if(name==='Felpa Tradizionale'){
+        felpe-=1
+    }
+
+    if(name==='Borraccia'){
+        borracce-=1
+    }
+
     if (index > -1) {
         final.cart.splice(index, 1);
     }
+
     final.cost-=costo
     torem.parentNode.removeChild(torem)
 }
