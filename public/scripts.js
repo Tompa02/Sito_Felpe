@@ -3,7 +3,7 @@ let felpe = 0
 let borracce = 0
 let magliette = 0
 
-const Aggiungi = function (name, costo) {
+const Aggiungi = function (name, costo = 10) {
     let row = document.createElement("div")
     let thing = document.createElement("div")
     let cost = document.createElement("div")
@@ -18,6 +18,7 @@ const Aggiungi = function (name, costo) {
         borracce+=1
     }
 
+
     row.setAttribute('class', 'row')
     row.setAttribute('id', numofrow)
     thing.setAttribute('class', 'col-9')
@@ -26,7 +27,9 @@ const Aggiungi = function (name, costo) {
     butt.setAttribute('class', 'btn btn-danger')
     butt.setAttribute('onclick', 'Remove('+numofrow+','+costo+','+'\''+name+'\''+')')
 
-    let text = document.createTextNode(name)
+    let taglia = document.getElementById('Taglia').value 
+
+    let text = document.createTextNode(name+" "+taglia)
     let num = document.createTextNode(costo)
     let mess= document.createTextNode("ELIMINA")
 
@@ -44,13 +47,11 @@ const Aggiungi = function (name, costo) {
 
     let color = document.getElementById('trad').src
 
-    final.cart.push([name, GetColor(color)])
+    final.cart.push([name, GetColor(color), taglia])
     final.cost += costo
     numofrow+=1
-<<<<<<< HEAD
-=======
     console.log(final.cart)
->>>>>>> a8a5aa76021dd7ccfd354bc2af7cca4fcd599e11
+
 }
 
 
@@ -93,6 +94,7 @@ const SEND = function (){
     }).then(res => {
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
+            download(JSON.stringify(scontrino), 'scontrino.txt', 'text/plain')
         } else if (res.status == 700) {
             alert('C\'è stato un errore durante la registrazione dell \'ordine')
         }

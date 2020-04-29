@@ -4,6 +4,14 @@ const cors_enabler = require('cors')
 const parser = require('body-parser')
 const server = express()
 
+const prezzi = {
+    'felpa': 20,
+    'maglia': 15,
+    'annuario': 5,
+    'borraccia' : 0
+}
+
+
 server.use(express.static(path.join(__dirname, 'public')));
 
 server.use(parser.json())

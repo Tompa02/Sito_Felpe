@@ -30,18 +30,50 @@
             <div class="card-body">
               <h5 class="card-title">Felpa Tradizionale</h5>
               <p class="card-text">breve descrizione felpa tradizionale</p>
-              <button type="button" class="btn btn-primary btn-lg" style="background-color: black;" onclick="CambiaColore('./Images/FTBLACK.jpg', 'trad')"></button>
+              <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/FTBLACK.jpg', 'trad')"></button>
+              <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/FTGREY.jpg', 'trad')"></button>
+              <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff; margin-right: 4px;" onclick="CambiaColore('./Images/FTWHITE.jpg', 'trad')"></button>
+              <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/FTBLUE.jpg', 'trad')"></button>
+              <button type="button" class="btn btn-primary btn-lg" style="background-color: green; margin-right: 4px;" onclick="CambiaColore('./Images/FTGREEN.jpg', 'trad')"></button>
               <button type="button" class="btn btn-primary btn-lg" style="background-color: red;" onclick="CambiaColore('./Images/FTRED.jpg', 'trad')"></button>
-              <button type="button" class="btn btn-primary btn-lg" style="background-color: green;" onclick="CambiaColore('./Images/FTGREEN.jpg', 'trad')"></button>
-              <button type="button" class="btn btn-primary btn-lg" style="background-color: grey;" onclick="CambiaColore('./Images/FTGREY.jpg', 'trad')"></button>
-              <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff;" onclick="CambiaColore('./Images/FTWHITE.jpg', 'trad')"></button>
-              <button type="button" class="btn btn-primary btn-lg" style="background-color: blue;" onclick="CambiaColore('./Images/FTBLUE.jpg', 'trad')"></button>
+              <select id="Taglia" class="form-control" style="width: 75px;  margin-top: 5px;">
+                <option selected>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+              </select>
               <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
-              <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale', 20)">Aggiungi al carrello</button>
+              <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale')">Aggiungi al carrello</button>
             </div>
           </div>
       </div>
       
+      <div class="col mb-4">
+        <div class="card" style="background:#ffa052">
+          <img src="./Images/MAGWHITE.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="maglia">
+          <div class="card-body">
+            <h5 class="card-title">Maglietta</h5>
+            <p class="card-text">breve descrizione maglietta</p>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/MAGBLACK.jpg', 'maglia')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/MAGGREY.jpg', 'maglia')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff; margin-right: 4px;" onclick="CambiaColore('./Images/MAGWHITE.jpg', 'maglia')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/MAGBLUE.jpg', 'maglia')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: green; margin-right: 4px;" onclick="CambiaColore('./Images/MAGGREEN.jpg', 'maglia')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: red; margin-bottom: 2px;" onclick="CambiaColore('./Images/MAGRED.jpg', 'maglia')"></button>
+            <select id="Taglia" class="form-control" style="width: 75px; margin-top: 5px;">
+              <option selected>XS</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <p class="card-text" style="text-align: end; font-size: 30px;">15€</p>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Maglietta')">Aggiungi al carrello</button>
+          </div>
+        </div>
+      </div>
+
       <div class="col mb-4">
         <div class="card" style="background:#ffa052">
           <img src="./Images/Borraccia.jpg" class="card-img-top" alt="immagine_borraccia" id='borr'>
@@ -50,25 +82,7 @@
             <p class="card-text">breve descrizione borraccia</p>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: black;" onclick="CambiaColore('./Images/borraccia.jpg', 'borr')"></button>
             <p class="card-text" style="text-align: end; font-size: 30px;">0€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Borraccia', 0)">Aggiungi al carrello</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="card" style="background:#ffa052">
-          <img src="./Images/MAGWHITE.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="maglia">
-          <div class="card-body">
-            <h5 class="card-title">Maglietta</h5>
-            <p class="card-text">breve descrizione maglietta</p>
-            <button type="button" class="btn btn-primary btn-lg" style="background-color: black;" onclick="CambiaColore('./Images/MAGBLACK.jpg', 'maglia')"></button>
-            <button type="button" class="btn btn-primary btn-lg" style="background-color: red;" onclick="CambiaColore('./Images/MAGRED.jpg', 'maglia')"></button>
-            <button type="button" class="btn btn-primary btn-lg" style="background-color: green;" onclick="CambiaColore('./Images/MAGGREEN.jpg', 'maglia')"></button>
-            <button type="button" class="btn btn-primary btn-lg" style="background-color: grey;" onclick="CambiaColore('./Images/MAGGREY.jpg', 'maglia')"></button>
-            <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff;" onclick="CambiaColore('./Images/MAGWHITE.jpg', 'maglia')"></button>
-            <button type="button" class="btn btn-primary btn-lg" style="background-color: blue;" onclick="CambiaColore('./Images/MAGBLUE.jpg', 'maglia')"></button>
-            <p class="card-text" style="text-align: end; font-size: 30px;">15€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Maglietta', 15)">Aggiungi al carrello</button>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Borraccia')">Aggiungi al carrello</button>
           </div>
         </div>
       </div>
@@ -81,7 +95,7 @@
             <p class="card-text">breve descrizione annuario</p>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: green;"></button>
             <p class="card-text" style="text-align: end; font-size: 30px;">5€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Annuario', 5)">Aggiungi al carrello</button>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Annuario')">Aggiungi al carrello</button>
           </div>
         </div>
       </div>
