@@ -44,9 +44,13 @@ const Aggiungi = function (name, costo) {
 
     let color = document.getElementById('trad').src
 
-    final.cart.push([name, color])
+    final.cart.push([name, GetColor(color)])
     final.cost += costo
     numofrow+=1
+<<<<<<< HEAD
+=======
+    console.log(final.cart)
+>>>>>>> a8a5aa76021dd7ccfd354bc2af7cca4fcd599e11
 }
 
 
@@ -69,7 +73,6 @@ const SEND = function (){
     final.Sede = document.getElementById("Sede").value
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
-    final.cost = 0
     
     let jsonData = JSON.stringify(final)
     final.id = md5(jsonData)
@@ -148,4 +151,15 @@ const controllo = function (){
         return false
     }
     return true
+}
+
+
+const GetColor = function (color) {
+    const arrcolo = ['BLACK', 'GREEN', 'WHITE', 'RED', 'GREY', 'BLUE']
+    for(let i=0; i<arrcolo.length; i++){
+        if(color.indexOf(arrcolo[i])>0){
+            return arrcolo[i]
+        }
+    }
+
 }
