@@ -44,10 +44,10 @@ const Aggiungi = function (name, costo) {
 
     let color = document.getElementById('trad').src
 
-    final.cart.push([name, color])
+    final.cart.push([name, GetColor(color)])
     final.cost += costo
     numofrow+=1
-    console.log(final.cost)
+    console.log(final.cart)
 }
 
 
@@ -70,8 +70,6 @@ const SEND = function (){
     final.Sede = document.getElementById("Sede").value
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
-    final.cart = []
-    final.cost = 0
 
     for(let i = 1; i<numofrow; i++){
         let item = document.getElementById(i)
@@ -151,4 +149,15 @@ const controllo = function (){
         return false
     }
     return true
+}
+
+
+const GetColor = function (color) {
+    const arrcolo = ['BLACK', 'GREEN', 'WHITE', 'RED', 'GREY', 'BLUE']
+    for(let i=0; i<arrcolo.length; i++){
+        if(color.indexOf(arrcolo[i])>0){
+            return arrcolo[i]
+        }
+    }
+
 }
