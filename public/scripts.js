@@ -51,6 +51,15 @@ const Aggiungi = function (name, costo) {
 }
 
 
+function download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
+
 const SEND  = function (){
     final.Email = document.getElementById("Email").value
     final.Nome = document.getElementById("Nome").value
@@ -81,20 +90,12 @@ const SEND  = function (){
         cart : final.cart,
         cost : final. cost
     }
+    console.log(JSON.stringify(scontrino))
 
-    function download(content, fileName, contentType) {
-        var a = document.createElement("a");
-        var file = new Blob([content], {type: contentType});
-        a.href = URL.createObjectURL(file);
-        a.download = fileName;
-        a.click();
-    }
-    download(JSON.stringify(scontrino), 'scontrino.txt', 'text/plain');
     fetch("/register_order", {
         method: "POST", 
         body: JSON.stringify(scontrino)
       }).then(res => {
-        // visualizza errori o tutto ok
       })
 }
 
