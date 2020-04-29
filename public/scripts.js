@@ -90,6 +90,12 @@ const SEND  = function (){
         a.click();
     }
     download(JSON.stringify(scontrino), 'scontrino.txt', 'text/plain');
+    fetch("/register_order", {
+        method: "POST", 
+        body: JSON.stringify(data)
+      }).then(res => {
+        // visualizza errori o tutto ok
+      });
 }
 
 
