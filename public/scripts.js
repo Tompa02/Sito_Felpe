@@ -47,7 +47,6 @@ const Aggiungi = function (name, costo) {
     final.cart.push([name, color])
     final.cost += costo
     numofrow+=1
-    console.log(final.cost)
 }
 
 
@@ -70,14 +69,7 @@ const SEND = function (){
     final.Sede = document.getElementById("Sede").value
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
-    final.cart = []
     final.cost = 0
-
-    for(let i = 1; i<numofrow; i++){
-        let item = document.getElementById(i)
-        let val = item.getElementsByClassName('col-9').outertext
-        final.cart.push(val)
-    }
     
     let jsonData = JSON.stringify(final)
     final.id = md5(jsonData)
@@ -95,7 +87,13 @@ const SEND = function (){
         method: "POST", 
         body: JSON.stringify(final),
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
-    }).then(res => {})
+    }).then(res => {
+        if (res.status == 200) {
+            alert('L\'ordine è stato registrato con successo')
+        } else if (res.status == 700) {
+            alert('C\'è stato un errore durante la registrazione dell \'ordine')
+        }
+    })
 }
 
 
@@ -137,7 +135,6 @@ const Remove = function (num, costo, name){
     final.cost-=costo
     torem.parentNode.removeChild(torem)
 }
-
 
 
 const final = {

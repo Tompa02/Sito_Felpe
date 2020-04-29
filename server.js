@@ -14,20 +14,17 @@ server.get('/', (req, res) => {
 })
 
 const verify = function(req, res, next) {
-    console.log(req.body)
     const order = req.body
-    if(order.Email===null||order.Nome===null||order.Cognome===null||
-        order.Indirizzo===null||order.Comune===null||
-        order.CAP===null||order.Sede===null||
-        order.Sezione===null||order.Classe===null||
-        order.cart===null||order.cost===null){
-            //
-        }
-    next()
+    console.log(order)
+    if(order.Email==''||order.Nome==''||order.Cognome==''||
+        order.Indirizzo==''||order.Comune==''||order.CAP==''){
+            res.status(700);
+            res.send('error')
+    } else {
+        next()
+    }
 }
 
-server.post('/register_order', verify, (req, res) => {
-    res.send('POST request for order')
-})
+server.post('/register_order', verify, (req, res) => {res.send('jj')})
 
 server.listen(8080)
