@@ -51,4 +51,4 @@ server.post('/sending_cart', sentcart, (req, res) => {res.send('jj')})
 
 server.post('/register_order', verify, (req, res) => {res.send('jj')})
 
-server.listen(8000)
+server.listen(8080)
