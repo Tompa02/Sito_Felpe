@@ -13,5 +13,6 @@ server.post('/register_order', (req, res) => {if(final.Email===null||final.Nome=
         final.Indirizzo===null||final.Comune===null||
         final.CAP===null||final.Sede===null||
         final.Sezione===null||final.Classe===null||
-        final.cart===null||final.cost===null){console.log("sei un coglione")}
+        final.cart===null||final.cost===null){console.log("sei un coglione")}})
+        
 server.listen(8080)
