@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="styles.css">
     <title>Felpe Ariosto Spallanzani</title>
   </head>
-  <body>
+  <body style="background: hsl(170, 82%, 82%);">
   	<ul class="nav justify-content-center">
         <li class="nav-item">
           <a class="nav-link disabled" href="#" aria-disabled="true" style="font-size:30px"><i>LICEO ARIOSTO SPALLANZANI</i></a>
         </li>
     </ul>
 
-    <form  style="margin : 10px">
+    <form  style="margin : 10px; text-align: center;">
       <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputEmail">Email</label>
@@ -35,52 +35,12 @@
             <input type="text" class="form-control" id="Indirizzo" placeholder="Indirizzo">
           </div>
           <div class="form-group col-md-4">
-          <label for="inputComune">Comune</label>    
-            <select id="Comune" class="form-control">
-              <option selected>Choose...</option>
-              <option>Albinea</option>
-              <option>Bagnolo in Piano</option>
-              <option>Baiso</option>
-              <option>Bibbiano</option>
-              <option>Boretto</option>
-              <option>Brescello</option>
-              <option>Cadelbosco di Sopra</option>
-              <option>Campagnola Emilia</option>
-              <option>Campegine</option>
-              <option>Canossa</option>
-              <option>Carpineti</option>
-              <option>Casalgrande</option>
-              <option>Casina</option>
-              <option>Castellarano</option>
-              <option>Castelnovo di Sotto</option>
-              <option>Castelnovo ne' Monti</option>
-              <option>Cavriago</option>
-              <option>Correggio</option>
-              <option>Fabbrico</option>
-              <option>Gattatico</option>
-              <option>Gualtieri</option>
-              <option>Guastalla</option>
-              <option>Luzzara</option>
-              <option>Montecchio Emilia</option>
-              <option>Novellara</option>
-              <option>Poviglio</option>
-              <option>Quattro Castella</option>
-              <option>Reggio Emilia</option>
-              <option>Reggiolo</option>
-              <option>Rio Saliceto</option>
-              <option>Rolo</option>
-              <option>Rubiera</option>
-              <option>San Martino in Rio</option>
-              <option>San Polo d'Enza</option>
-              <option>Sant'Ilario d'Enza</option>
-              <option>Scandiano</option>
-              <option>Toano</option>
-              <option>Ventasso</option>
-              <option>Vetto</option>
-              <option>Vezzano sul Crostolo</option>
-              <option>Viano</option>
-              <option>Villa Minozzo</option>
-            </select>
+            <label for="inputAddress">Comune</label>    
+              <input type="text" class="form-control" id="Comune" placeholder="Comune">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputAddress">CAP</label>    
+              <input type="text" class="form-control" id="CAP" placeholder="CAP">
           </div>
       </div>
       <div class="form-row">
@@ -104,10 +64,23 @@
               <option>S</option>
             </select>
           </div>
+          <div class="form-group col-md-4">
+            <label for="inputSezione">Classe</label>
+            <select id="Classe" class="form-control">
+              <option selected>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
       </div>
       
       <button type="submit" class="btn btn-primary" onclick="SEND()">Invia ordine</button>
     </form>
+
+
+    <div id = 'ok'></div>
 
     <footer class="page-footer font-small blue pt-4">
       <div class="footer-copyright text-center py-3">© 2020 Copyright:
@@ -117,8 +90,10 @@
 
 
     <script src="scripts.js"></script>
+    <script src="saves.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>RESTORE()</script>
   </body>
 </html>
