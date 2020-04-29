@@ -60,7 +60,7 @@ function download(content, fileName, contentType) {
 }
 
 
-const SEND  = function (){
+const SEND = function (){
     final.Email = document.getElementById("Email").value
     final.Nome = document.getElementById("Nome").value
     final.Cognome = document.getElementById("Cognome").value
@@ -78,25 +78,26 @@ const SEND  = function (){
         let val = item.getElementsByClassName('col-9').outertext
         final.cart.push(val)
     }
-
     
     let jsonData = JSON.stringify(final)
-    let hash = md5(jsonData)
+    final.id = md5(jsonData)
+    jsonData = JSON.stringify(final)
 
     let scontrino = {
-        id : hash,
+        id : final.id,
         Nome: final.Nome,
         Cognome : final.Cognome,
         cart : final.cart,
-        cost : final. cost
+        cost : final.cost
     }
-    console.log(JSON.stringify(scontrino))
+
+    console.log(scontrino)
 
     fetch("/register_order", {
         method: "POST", 
-        body: JSON.stringify(scontrino)
-      }).then(res => {
-      })
+        body: JSON.stringify(final),
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
+    }).then(res => {console.log(res)})
 }
 
 
