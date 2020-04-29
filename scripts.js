@@ -1,4 +1,7 @@
 let numofrow = 1
+let felpe = 0
+let borracce = 0
+let magliette = 0
 
 const Aggiungi = function (name, costo) {
     let row = document.createElement("div")
@@ -7,6 +10,13 @@ const Aggiungi = function (name, costo) {
     let remover = document.createElement("div")
     let butt = document.createElement("button")
 
+    if(name==='Felpa Tradizionale'){
+        felpe+=1
+    }
+
+    if(name==='Borraccia'){
+        borracce+=1
+    }
 
     row.setAttribute('class', 'row')
     row.setAttribute('id', numofrow)
@@ -85,11 +95,16 @@ const SEND  = function (){
 
 const SAVE = function (){
     final.cost+=2
-    sessionStorage.setItem('label', 'value')
+    if(!(controllo())){
+        alert("Hai preso troppe borracce")
+        return 0
+    }
+    let but = document.getElementById('goform')
+    but.href = './form.html'
 }
 
 const RESTORE = function(){
-    sessionStorage.getItem('label')
+    
 }
 
 const CambiaColore = function (newimage, name){
@@ -106,4 +121,19 @@ const Remove = function (num, costo){
     }
     final.cost-=costo
     torem.parentNode.removeChild(torem)
+}
+
+
+
+const final = {
+    cart : [],
+    cost : 0   
+}
+
+
+const controllo = function (){
+    if(borracce>felpe){
+        return false
+    }
+    return true
 }
