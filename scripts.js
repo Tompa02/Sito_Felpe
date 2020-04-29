@@ -62,6 +62,15 @@ const SEND  = function (){
 
     
     let jsonData = JSON.stringify(final)
+    let hash = md5(jsonData)
+
+    let scontrino = {
+        id : hash,
+        Nome: final.Nome,
+        Cognome : final.Cognome,
+        cart : final.cart,
+        cost : final. cost
+    }
 
     function download(content, fileName, contentType) {
         var a = document.createElement("a");
@@ -70,16 +79,17 @@ const SEND  = function (){
         a.download = fileName;
         a.click();
     }
-    download(jsonData, 'ordine.txt', 'text/plain');
+    download(JSON.stringify(scontrino), 'scontrino.txt', 'text/plain');
 }
 
 
 const SAVE = function (){
-
+    final.cost+=2
+    sessionStorage.setItem('label', 'value')
 }
 
 const RESTORE = function(){
-    
+    sessionStorage.getItem('label')
 }
 
 const CambiaColore = function (newimage, name){
