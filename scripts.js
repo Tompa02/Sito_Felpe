@@ -1,34 +1,45 @@
+let numofrow = 1
+
 const Aggiungi = function (name, costo) {
     let row = document.createElement("div")
     let thing = document.createElement("div")
     let cost = document.createElement("div")
+    let remover = document.createElement("div")
+    let butt = document.createElement("button")
+
 
     row.setAttribute('class', 'row')
-    thing.setAttribute('class', 'col-10')
+    row.setAttribute('id', numofrow)
+    thing.setAttribute('class', 'col-9')
     cost.setAttribute('class', 'col')
-
-
+    remover.setAttribute('class', 'col')
+    butt.setAttribute('class', 'btn btn-danger')
+    butt.setAttribute('onclick', 'Remove('+numofrow+','+costo+')')
 
     let text = document.createTextNode(name)
     let num = document.createTextNode(costo)
+    let mess= document.createTextNode("ELIMINA")
 
+    butt.appendChild(mess)
     thing.appendChild(text)
     cost.appendChild(num)
+    remover.appendChild(butt)
 
     row.appendChild(thing)
     row.appendChild(cost)
+    row.appendChild(remover)
 
     let element = document.getElementById("carrello")
     element.appendChild(row)
 
-    final.cart.push(name)
+    let color = document.getElementById('trad').src
+
+    final.cart.push([name, color])
     final.cost += costo
+    numofrow+=1
+    console.log(final.cost)
 }
 
-const final = {
-    cart : [],
-    cost: 0
-}
 
 const SEND  = function (){
     final.Email = document.getElementById("Email").value
@@ -36,11 +47,30 @@ const SEND  = function (){
     final.Cognome = document.getElementById("Cognome").value
     final.Indirizzo = document.getElementById("Indirizzo").value
     final.Comune = document.getElementById("Comune").value
+    final.CAP = document.getElementById("CAP").value
     final.Sede = document.getElementById("Sede").value
     final.Sezione = document.getElementById("Sezione").value
+    final.Classe = document.getElementById("Classe").value
+    final.cart = []
+    final.cost = 0
+
+    for(let i = 1; i<numofrow; i++){
+        let item = document.getElementById(i)
+        let val = item.getElementsByClassName('col-9').outertext
+        final.cart.push(val)
+    }
 
     
     let jsonData = JSON.stringify(final)
+    let hash = md5(jsonData)
+
+    let scontrino = {
+        id : hash,
+        Nome: final.Nome,
+        Cognome : final.Cognome,
+        cart : final.cart,
+        cost : final. cost
+    }
 
     function download(content, fileName, contentType) {
         var a = document.createElement("a");
@@ -49,5 +79,31 @@ const SEND  = function (){
         a.download = fileName;
         a.click();
     }
-    download(jsonData, 'json.txt', 'text/plain');
+    download(JSON.stringify(scontrino), 'scontrino.txt', 'text/plain');
+}
+
+
+const SAVE = function (){
+    final.cost+=2
+    sessionStorage.setItem('label', 'value')
+}
+
+const RESTORE = function(){
+    sessionStorage.getItem('label')
+}
+
+const CambiaColore = function (newimage, name){
+    let pic = document.getElementById(name)
+    pic.src = newimage
+}
+
+
+const Remove = function (num, costo){
+    let torem = document.getElementById(num)
+    const index = num-1
+    if (index > -1) {
+        final.cart.splice(index, 1);
+    }
+    final.cost-=costo
+    torem.parentNode.removeChild(torem)
 }
