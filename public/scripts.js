@@ -10,48 +10,74 @@ const Aggiungi = function (name, costo = 10) {
     let remover = document.createElement("div")
     let butt = document.createElement("button")
 
-    if(name==='Felpa Tradizionale'){
+    if(name==='Felpa Tradizionale' || name==="Maglietta"){
         felpe+=1
+        row.setAttribute('class', 'row')
+        row.setAttribute('id', numofrow)
+        thing.setAttribute('class', 'col-9')
+        cost.setAttribute('class', 'col')
+        remover.setAttribute('class', 'col')
+        butt.setAttribute('class', 'btn btn-danger')
+        butt.setAttribute('onclick', 'Remove('+numofrow+','+costo+','+'\''+name+'\''+')')
+
+        let taglia = ""
+        name === 'Felpa Tradizionale' ? taglia = document.getElementById('TagliaF').value : taglia = document.getElementById('TagliaM').value 
+
+        let text = document.createTextNode(name+" "+taglia)
+        let num = document.createTextNode(costo)
+        let mess= document.createTextNode("ELIMINA")
+
+        butt.appendChild(mess)
+        thing.appendChild(text)
+        cost.appendChild(num)
+        remover.appendChild(butt)
+
+        row.appendChild(thing)
+        row.appendChild(cost)
+        row.appendChild(remover)
+
+        let element = document.getElementById("carrello")
+        element.appendChild(row)
+
+        let color = document.getElementById('trad').src
+
+        final.cart.push([name, GetColor(color), taglia])
+        numofrow+=1
+        console.log(final.cart)
     }
 
-    if(name==='Borraccia'){
+    if(name==='Borraccia' || name==="Annuario"){
         borracce+=1
+        row.setAttribute('class', 'row')
+        row.setAttribute('id', numofrow)
+        thing.setAttribute('class', 'col-9')
+        cost.setAttribute('class', 'col')
+        remover.setAttribute('class', 'col')
+        butt.setAttribute('class', 'btn btn-danger')
+        butt.setAttribute('onclick', 'Remove('+numofrow+','+costo+','+'\''+name+'\''+')')
+
+        let text = document.createTextNode(name)
+        let num = document.createTextNode(costo)
+        let mess= document.createTextNode("ELIMINA")
+
+        butt.appendChild(mess)
+        thing.appendChild(text)
+        cost.appendChild(num)
+        remover.appendChild(butt)
+
+        row.appendChild(thing)
+        row.appendChild(cost)
+        row.appendChild(remover)
+
+        let element = document.getElementById("carrello")
+        element.appendChild(row)
+
+        let color = document.getElementById('trad').src
+
+        final.cart.push([name, GetColor(color)])
+        numofrow+=1
+        console.log(final.cart)
     }
-
-
-    row.setAttribute('class', 'row')
-    row.setAttribute('id', numofrow)
-    thing.setAttribute('class', 'col-9')
-    cost.setAttribute('class', 'col')
-    remover.setAttribute('class', 'col')
-    butt.setAttribute('class', 'btn btn-danger')
-    butt.setAttribute('onclick', 'Remove('+numofrow+','+costo+','+'\''+name+'\''+')')
-
-    let taglia = document.getElementById('Taglia').value 
-
-    let text = document.createTextNode(name+" "+taglia)
-    let num = document.createTextNode(costo)
-    let mess= document.createTextNode("ELIMINA")
-
-    butt.appendChild(mess)
-    thing.appendChild(text)
-    cost.appendChild(num)
-    remover.appendChild(butt)
-
-    row.appendChild(thing)
-    row.appendChild(cost)
-    row.appendChild(remover)
-
-    let element = document.getElementById("carrello")
-    element.appendChild(row)
-
-    let color = document.getElementById('trad').src
-
-    final.cart.push([name, GetColor(color), taglia])
-    final.cost += costo
-    numofrow+=1
-    console.log(final.cart)
-
 }
 
 
