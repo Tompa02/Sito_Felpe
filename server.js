@@ -54,6 +54,11 @@ server.get('/form', (req, res) => {
     res.sendFile(__dirname + '/public/form.html');
 })
 
+server.get('*', (req, res) => {
+    res.writeHead(404, {"Content-Type": "text/html"})
+    res.end('<a href=\'\/\' title=\'spoiler: era questo il link che cercavi pirla\'>Forse era questo il link che cercavi?</a>');
+})
+
 const verify = function(req, res, next) {
     if (!req.body.cart) {
         res.send({"status": 700, "error": "Il carrello è vuoto"})

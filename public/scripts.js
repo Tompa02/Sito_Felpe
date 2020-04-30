@@ -19,8 +19,9 @@ const Aggiungi = function (name, costo = 10) {
 
         let taglia = ""
         name === 'Felpa Tradizionale' ? taglia = document.getElementById('TagliaF').value : taglia = document.getElementById('TagliaM').value 
+        let color = document.getElementById('trad').src
 
-        let text = document.createTextNode(name+" "+taglia)
+        let text = document.createTextNode(name+" "+taglia+" "+GetColor(color))
         let num = document.createTextNode(costo)
         let mess= document.createTextNode("ELIMINA")
 
@@ -35,8 +36,6 @@ const Aggiungi = function (name, costo = 10) {
 
         let element = document.getElementById("carrello")
         element.appendChild(row)
-
-        let color = document.getElementById('trad').src
 
         final.cart.push([name, GetColor(color), taglia])
         numofrow+=1
@@ -113,8 +112,8 @@ const SEND = function (){
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
             const output = new jsPDF()
-            output.text(`Intestatario: ${final.Cognome} ${final.Nome}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nId: ${res.id}\nSpesa: ${res.cost}\nCarrello: \n   -${final.cart.replace(/; /g, '\n   -')}`, 10, 10)
-            output.save(`ricevuta_${final.Cognome}_${final.Nome}`)
+            output.text(`Intestatario: ${final.Cognome} ${final.Nome} ${final.Classe}${final.Sezione} ${final.Sede}\nEmail: ${final.Email}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nId: ${res.id}\nSpesa: ${res.cost}€\nCarrello: \n   -${final.cart.replace(/; /g, '\n   -')}`, 10, 10)
+            output.save(`ricevuta_${final.Cognome}_${final.Nome}.pdf`)
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
             alert(res.error)
