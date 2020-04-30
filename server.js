@@ -38,17 +38,16 @@ const verify = function(req, res, next) {
     const order = req.body
     if(order.Email==''||order.Nome==''||order.Cognome==''||
         order.Indirizzo==''||order.Comune==''||order.CAP==''){
-            res.status(700)
-            res.send('error')
+            res.send({"status": 700, "error": "error"})
     } else {
         next()
     }
 }
 
 server.post('/register_order', verify, (req, res) => {
-    req.body.cost = 0
+    const cost = 0
     const id = crypto.createHash('md5').update(JSON.stringify(req.body)).digest("hex")
-    res.send({"cost": req.body.cost, "id": id})
+    res.send({"status": 200, "cost": cost, "id": id})
 })
 
 server.listen(8080)

@@ -97,19 +97,17 @@ const SEND = function (){
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
 
-    let scontrino = {
-        Nome: final.Nome,
-        Cognome : final.Cognome,
-        cart : final.cart
-    }
-
     fetch("/register_order", {
         method: "POST", 
         body: JSON.stringify(final),
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
-    }).then(res => {
+    })
+    .then(res => res.json())
+    .then(res => {
+        console.log(res.status)
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
+            let scontrino = {Nome: final.Nome, Cognome : final.Cognome, cart : final.cart, id : res.id, cost: res.cost}
         } else if (res.status == 700) {
             alert('C\'è stato un errore durante la registrazione dell \'ordine')
         }
