@@ -57,9 +57,11 @@ server.get('/form', (req, res) => {
 const verify = function(req, res, next) {
     req.body.cart = req.body.cart.split("; ").map(e => e.split(", "))
     const order = req.body
+    console.log(order.cart)
+    console.log(order.cart)
     if(order.Email==''||order.Nome==''||order.Cognome==''||
-        order.Indirizzo==''||order.Comune==''||order.CAP==''){
-            res.send({"status": 700, "error": "error"})
+        order.Indirizzo==''||order.Comune==''||order.CAP==''||order.cart){
+            res.send({"status": 700, "error": "Controllare che tutti i campi siano validi"})
     } else {
         next()
     }
@@ -89,10 +91,7 @@ server.post('/register_order', verify, (req, res) => {
         carrello:req.body.cart
     }]
 
-    csvWriter.writeRecords(appends)
-    .then(() => {
-        console.log('...Done');
-    });
+    csvWriter.writeRecords(appends).then(() => {});
 
     res.send({"status": 200, "cost": cost, "id": id})
 })

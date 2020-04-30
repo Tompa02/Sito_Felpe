@@ -101,7 +101,10 @@ const SEND = function (){
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
     final.cart = localStorage.getItem('cart')
-
+    if (final.cart){
+        alert('Il carrello è vuoto')
+        return 0
+    } 
     fetch("/register_order", {
         method: "POST", 
         body: JSON.stringify(final),
@@ -116,7 +119,7 @@ const SEND = function (){
             output.save('scontrino.pdf')
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
-            alert('C\'è stato un errore durante la registrazione dell \'ordine')
+            alert(res.error)
         }
     })
 }
