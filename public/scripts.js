@@ -107,7 +107,7 @@ const SEND = function (){
     .then(res => {
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
-            localStorage.setItem("cart", [])
+            localStorage.setItem("cart", "")
         } else if (res.status == 700) {
             alert('C\'è stato un errore durante la registrazione dell \'ordine')
         }
@@ -119,7 +119,7 @@ const SAVE = function (){
         alert("Hai preso troppe borracce")
         return 0
     }
-    localStorage.setItem("cart", final.cart);
+    localStorage.setItem("cart", final.cart.map(e => e.length > 1? `${e[0]}, ${e.flatMap((e,i) => i? e: "").filter(e => {if (e) return e}).join(", ")}`: e.toString() ).join("; "));
     let but = document.getElementById("goform")
     but.href = "./form"
 }
