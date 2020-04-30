@@ -8,7 +8,7 @@ const Aggiungi = function (name, costo = 10) {
     let remover = document.createElement("div")
     let butt = document.createElement("button")
 
-    if(name==='Felpa Tradizionale' || name==="Maglietta"){
+    if(name[0 ]==='F' || name==="Maglietta"){ // controlla solo la prima lettera così funziona per tutti i tipi di felpa
         row.setAttribute('class', 'row')
         row.setAttribute('id', numofrow)
         thing.setAttribute('class', 'col-9')
@@ -20,8 +20,8 @@ const Aggiungi = function (name, costo = 10) {
         let taglia = ""
         let color = ""
 
-        name === 'Felpa Tradizionale' ? taglia = document.getElementById('TagliaF').value : taglia = document.getElementById('TagliaM').value
-        name === 'Felpa Tradizionale' ? color = document.getElementById('trad').src : color = document.getElementById('maglia').src
+        name[0] === 'F' ? taglia = document.getElementById('TagliaF').value : taglia = document.getElementById('TagliaM').value
+        name[0] === 'F' ? color = document.getElementById('trad').src : color = document.getElementById('maglia').src
 
         let text = document.createTextNode(name+" "+taglia+" "+GetColor(color))
         let num = document.createTextNode(costo)
@@ -41,7 +41,7 @@ const Aggiungi = function (name, costo = 10) {
 
         final.cart.push([name, GetColor(color), taglia])
         numofrow+=1
-        if (name === 'Felpa Tradizionale') { $('#notifica_felpa').toast('show') }
+        if (name[0] === 'F') { $('#notifica_felpa').toast('show') }
         else { $('#notifica_maglia').toast('show') }
     }
 

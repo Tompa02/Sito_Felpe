@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Felpe Ariosto Spallanzani</title>
   </head>
-  <body style="background: #f2e4d8;">
+  <body style="background: #f2e4d8">
     <ul class="nav justify-content-center">
         <li class="nav-item">
           <a class="nav-link disabled" href="#" aria-disabled="true" style="font-size:30px"><i>LICEO ARIOSTO SPALLANZANI</i></a>
@@ -32,7 +32,7 @@
           <div class="card" style="background:#ffa052">
             <img src="./Images/FTWHITE.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad">
             <div class="card-body">
-              <h5 class="card-title">Felpa Tradizionale</h5>
+              <h5 class="card-title">Felpa Tradizionale tipo 1</h5>
               <p class="card-text">Felpa del liceo Ariosto Spallanzani</p>
               <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/FTBLACK.jpg', 'trad')"></button>
               <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/FTGREY.jpg', 'trad')"></button>
@@ -48,9 +48,84 @@
                 <option>XL</option>
               </select>
               <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
-              <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale', 20)">Aggiungi al carrello</button>
+              <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -1-', 20)">Aggiungi al carrello</button>
             </div>
           </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="card" style="background:#ffa052">
+          <img src="./Images/FTWHITE.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad">
+          <div class="card-body">
+            <h5 class="card-title">Felpa Tradizionale tipo 2</h5>
+            <p class="card-text">Felpa del liceo Ariosto Spallanzani</p>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/FTBLACK.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/FTGREY.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff; margin-right: 4px;" onclick="CambiaColore('./Images/FTWHITE.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/FTBLUE.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: green; margin-right: 4px;" onclick="CambiaColore('./Images/FTGREEN.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: red;" onclick="CambiaColore('./Images/FTRED.jpg', 'trad')"></button>
+            <select id="TagliaF" class="form-control" style="width: 75px;  margin-top: 5px;">
+              <option selected>XS</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -2-', 20)">Aggiungi al carrello</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="card" style="background:#ffa052">
+          <img src="./Images/FTWHITE.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad">
+          <div class="card-body">
+            <h5 class="card-title">Felpa Tradizionale tipo 3</h5>
+            <p class="card-text">Felpa del liceo Ariosto Spallanzani</p>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/FTBLACK.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/FTGREY.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff; margin-right: 4px;" onclick="CambiaColore('./Images/FTWHITE.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/FTBLUE.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: green; margin-right: 4px;" onclick="CambiaColore('./Images/FTGREEN.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: red;" onclick="CambiaColore('./Images/FTRED.jpg', 'trad')"></button>
+            <select id="TagliaF" class="form-control" style="width: 75px;  margin-top: 5px;">
+              <option selected>XS</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -3-', 20)">Aggiungi al carrello</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="card" style="background:#ffa052">
+          <img src="./Images/FTWHITE.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad">
+          <div class="card-body">
+            <h5 class="card-title">Felpa Tradizionale tipo 4</h5>
+            <p class="card-text">Felpa del liceo Ariosto Spallanzani</p>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/FTBLACK.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/FTGREY.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff; margin-right: 4px;" onclick="CambiaColore('./Images/FTWHITE.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/FTBLUE.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: green; margin-right: 4px;" onclick="CambiaColore('./Images/FTGREEN.jpg', 'trad')"></button>
+            <button type="button" class="btn btn-primary btn-lg" style="background-color: red;" onclick="CambiaColore('./Images/FTRED.jpg', 'trad')"></button>
+            <select id="TagliaF" class="form-control" style="width: 75px;  margin-top: 5px;">
+              <option selected>XS</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -4-', 20)">Aggiungi al carrello</button>
+          </div>
+        </div>
       </div>
       
       <div class="col mb-4">
