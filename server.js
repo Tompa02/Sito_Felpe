@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const cors_enabler = require('cors')
+const crypto = require('crypto')
 const parser = require('body-parser')
 const server = express()
 
@@ -21,6 +21,11 @@ server.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 })
 
+server.get('/form', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.sendFile(__dirname + '/public/form.html');
+})
+
 const verify = function(req, res, next) {
     const order = req.body
     if(order.Email==''||order.Nome==''||order.Cognome==''||
@@ -28,27 +33,14 @@ const verify = function(req, res, next) {
             res.status(700)
             res.send('error')
     } else {
-        order.cart=carrello
-        console.log(order)
         next()
     }
 }
 
-let carrello
-
-const sentcart = function(req, res, next) {
-    const order = req.body
-    if(!(order)){
-            res.status(700);
-            res.send('error')
-    } else {
-        carrello = req.body['cart']
-        next()
-    }
-}
-
-server.post('/sending_cart', sentcart, (req, res) => {res.send('jj')})
-
-server.post('/register_order', verify, (req, res) => {res.send('jj')})
+server.post('/register_order', verify, (req, res) => {
+    req.body.cost = 0
+    const id = crypto.createHash('md5').update(JSON.stringify(req.body)).digest("hex")
+    res.send({"cost": req.body.cost, "id": id})
+})
 
 server.listen(8080)

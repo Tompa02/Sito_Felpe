@@ -78,7 +78,6 @@ const Aggiungi = function (name, costo = 10) {
     }
 }
 
-
 function download(content, fileName, contentType) {
     var a = document.createElement("a");
     var file = new Blob([content], {type: contentType});
@@ -86,7 +85,6 @@ function download(content, fileName, contentType) {
     a.download = fileName;
     a.click();
 }
-
 
 const SEND = function (){
     final.Email = document.getElementById("Email").value
@@ -98,17 +96,11 @@ const SEND = function (){
     final.Sede = document.getElementById("Sede").value
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
-    
-    let jsonData = JSON.stringify(final)
-    final.id = md5(jsonData)
-    jsonData = JSON.stringify(final)
 
     let scontrino = {
-        id : final.id,
         Nome: final.Nome,
         Cognome : final.Cognome,
-        cart : final.cart,
-        cost : final.cost
+        cart : final.cart
     }
 
     fetch("/register_order", {
@@ -118,42 +110,19 @@ const SEND = function (){
     }).then(res => {
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
-            let scontrino = {
-                id : final.id,
-                Nome: final.Nome,
-                Cognome : final.Cognome,
-                cart : final.cart,
-                cost : final.cost
-            }
-            download(JSON.stringify(scontrino), 'scontrino.txt', 'text/plain')
         } else if (res.status == 700) {
             alert('C\'è stato un errore durante la registrazione dell \'ordine')
         }
     })
 }
-
 
 const SAVE = function (){
     if(!(controllo())){
         alert("Hai preso troppe borracce")
         return 0
     }
-    fetch("/sending_cart", {
-        method: "POST", 
-        body: JSON.stringify(final),
-        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
-    }).then(res => {
-        if (res.status == 200) {
-            let but = document.getElementById('goform')
-            but.href = './form.html'
-        } else if (res.status == 700) {
-            alert('C\'è stato un errore durante la registrazione dell \'ordine')
-        }
-    })
-    
-}
-
-const RESTORE = function(){
+    let but = document.getElementById("goform")
+    but.href = "./form"
 }
 
 const CambiaColore = function (newimage, name){
@@ -161,33 +130,24 @@ const CambiaColore = function (newimage, name){
     pic.src = newimage
 }
 
-
 const Remove = function (num, costo, name){
     let torem = document.getElementById(num)
     const index = num-1
-
     if(name==='Felpa Tradizionale'){
         felpe-=1
     }
-
     if(name==='Borraccia'){
         borracce-=1
     }
-
     if (index > -1) {
         final.cart.splice(index, 1);
     }
-
-    final.cost-=costo
     torem.parentNode.removeChild(torem)
 }
 
-
 const final = {
-    cart : [],
-    cost : 0   
+    cart : []
 }
-
 
 const controllo = function (){
     if(borracce>felpe){
@@ -195,7 +155,6 @@ const controllo = function (){
     }
     return true
 }
-
 
 const GetColor = function (color) {
     const arrcolo = ['BLACK', 'GREEN', 'WHITE', 'RED', 'GREY', 'BLUE']
