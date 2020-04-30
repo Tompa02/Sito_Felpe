@@ -107,6 +107,8 @@ const SEND = function (){
     .then(res => {
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
+            let scontrino = {Nome: final.Nome, Cognome: final.Cognome, Ordine: final.cart, id: res.id, cost: res.cost}
+            download(JSON.stringify(scontrino), 'scontrino.txt', 'plain/text')
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
             alert('C\'è stato un errore durante la registrazione dell \'ordine')

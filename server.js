@@ -26,6 +26,7 @@ server.get('/form', (req, res) => {
 })
 
 const verify = function(req, res, next) {
+    req.body.cart = req.body.cart.split(";").map(e => e.split(", "))
     const order = req.body
     if(order.Email==''||order.Nome==''||order.Cognome==''||
         order.Indirizzo==''||order.Comune==''||order.CAP==''){
