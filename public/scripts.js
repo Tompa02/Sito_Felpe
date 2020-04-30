@@ -18,7 +18,7 @@ const Aggiungi = function (name, costo = 10) {
         cost.setAttribute('class', 'col')
         remover.setAttribute('class', 'col')
         butt.setAttribute('class', 'btn btn-danger')
-        butt.setAttribute('onclick', 'Remove('+numofrow+','+costo+','+'\''+name+'\''+')')
+        butt.setAttribute('onclick', 'Remove('+numofrow+')')
 
         let taglia = ""
         name === 'Felpa Tradizionale' ? taglia = document.getElementById('TagliaF').value : taglia = document.getElementById('TagliaM').value 
@@ -55,7 +55,7 @@ const Aggiungi = function (name, costo = 10) {
         cost.setAttribute('class', 'col')
         remover.setAttribute('class', 'col')
         butt.setAttribute('class', 'btn btn-danger')
-        butt.setAttribute('onclick', 'Remove('+numofrow+','+costo+','+'\''+name+'\''+')')
+        butt.setAttribute('onclick', 'Remove('+numofrow+')')
 
         let text = document.createTextNode(name)
         let num = document.createTextNode(costo)
@@ -133,20 +133,18 @@ const CambiaColore = function (newimage, name){
     pic.src = newimage
 }
 
-const Remove = function (num, costo, name){
-    let torem = document.getElementById(num)
-    const index = num-1
+const Remove = function (i){
+    let torem = document.getElementById("carrello").children[i]
     if(name==='Felpa Tradizionale'){
         felpe-=1
     }
     if(name==='Borraccia'){
         borracce-=1
     }
-    if (index > -1) {
-        final.cart.splice(index, 1);
+    if (i > -1) {
+        final.cart.splice(i, 1);
     }
-    torem.parentNode.removeChild(torem)
-
+    document.getElementById("carrello").removeChild(torem)
     update_id()
 }
 
@@ -167,9 +165,8 @@ const GetColor = function (color) {
 
 const update_id = function() {
     const children = document.getElementById("carrello").children
-    console.log(children.length)
     for (let i = 1; i < children.length; i++) {
         children[i].id = i
-        children[i].setAttribute('onclick', 'Remove('+i+','+children[i].children[1].innerHtml+','+'\''+children[i].children[0].innerHtml+'\''+')')
+        children[i].children[2].children[0].setAttribute('onclick', 'Remove('+i+')')
     }
 }
