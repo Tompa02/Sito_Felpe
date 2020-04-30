@@ -102,4 +102,4 @@ server.post('/register_order', verify, (req, res) => {
     res.send({"status": 200, "cost": cost, "id": id})
 })
 
-server.listen(8080)
+server.listen(80)
