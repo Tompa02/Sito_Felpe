@@ -80,6 +80,8 @@ const Aggiungi = function (name, costo = 10) {
         if (name === 'Borraccia') { $('#notifica_borraccia').toast('show') }
         else { $('#notifica_annuario').toast('show') }
     }
+
+    update_id()
 }
 
 function download(content, fileName, contentType) {
@@ -144,6 +146,8 @@ const Remove = function (num, costo, name){
         final.cart.splice(index, 1);
     }
     torem.parentNode.removeChild(torem)
+
+    update_id()
 }
 
 const final = {
@@ -157,5 +161,15 @@ const GetColor = function (color) {
         if(color.indexOf(arrcolo[i])>0){
             return arrcolo[i]
         }
+    }
+}
+
+
+const update_id = function() {
+    const children = document.getElementById("carrello").children
+    console.log(children.length)
+    for (let i = 1; i < children.length; i++) {
+        children[i].id = i
+        children[i].setAttribute('onclick', 'Remove('+i+','+children[i].children[1].innerHtml+','+'\''+children[i].children[0].innerHtml+'\''+')')
     }
 }
