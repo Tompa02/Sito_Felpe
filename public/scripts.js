@@ -107,8 +107,9 @@ const SEND = function (){
     .then(res => {
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
-            let scontrino = `Intestatario: ${final.Cognome} ${final.Nome}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nId: ${res.id}\nSpesa: ${res.cost}\nCarrello: ${final.cart}`
-            download(scontrino, 'scontrino.txt', 'plain/text')
+            const output = new jsPDF()
+            output.text(`Intestatario: ${final.Cognome} ${final.Nome}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nId: ${res.id}\nSpesa: ${res.cost}\nCarrello: ${final.cart}`, 10, 10)
+            output.save('scontrino.pdf')
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
             alert('C\'è stato un errore durante la registrazione dell \'ordine')
