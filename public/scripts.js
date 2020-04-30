@@ -18,8 +18,10 @@ const Aggiungi = function (name, costo = 10) {
         butt.setAttribute('onclick', 'Remove('+numofrow+')')
 
         let taglia = ""
-        name === 'Felpa Tradizionale' ? taglia = document.getElementById('TagliaF').value : taglia = document.getElementById('TagliaM').value 
-        let color = document.getElementById('trad').src
+        let color = ""
+
+        name === 'Felpa Tradizionale' ? taglia = document.getElementById('TagliaF').value : taglia = document.getElementById('TagliaM').value
+        name === 'Felpa Tradizionale' ? color = document.getElementById('trad').src : color = document.getElementById('maglia').src
 
         let text = document.createTextNode(name+" "+taglia+" "+GetColor(color))
         let num = document.createTextNode(costo)
