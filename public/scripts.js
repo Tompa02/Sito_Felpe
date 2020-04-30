@@ -73,7 +73,7 @@ const Aggiungi = function (name, costo = 10) {
 
         let color = document.getElementById('trad').src
 
-        final.cart.push([name, GetColor(color)])
+        final.cart.push([name])
         numofrow+=1
     }
 }
@@ -96,6 +96,7 @@ const SEND = function (){
     final.Sede = document.getElementById("Sede").value
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
+    final.cart = localStorage.getItem('cart')
 
     fetch("/register_order", {
         method: "POST", 
@@ -104,10 +105,9 @@ const SEND = function (){
     })
     .then(res => res.json())
     .then(res => {
-        console.log(res.status)
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
-            let scontrino = {Nome: final.Nome, Cognome : final.Cognome, cart : final.cart, id : res.id, cost: res.cost}
+            localStorage.setItem("cart", [])
         } else if (res.status == 700) {
             alert('C\'è stato un errore durante la registrazione dell \'ordine')
         }
@@ -119,6 +119,7 @@ const SAVE = function (){
         alert("Hai preso troppe borracce")
         return 0
     }
+    localStorage.setItem("cart", final.cart);
     let but = document.getElementById("goform")
     but.href = "./form"
 }
@@ -161,5 +162,4 @@ const GetColor = function (color) {
             return arrcolo[i]
         }
     }
-
 }
