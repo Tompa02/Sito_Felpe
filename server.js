@@ -55,6 +55,9 @@ server.get('/form', (req, res) => {
 })
 
 const verify = function(req, res, next) {
+    if (!req.body.cart) {
+        res.send({"status": 700, "error": "Il carrello è vuoto"})
+    }
     req.body.cart = req.body.cart.split("; ").map(e => e.split(", "))
     const order = req.body
     if(order.Email==''||order.Nome==''||order.Cognome==''||

@@ -99,6 +99,10 @@ const SEND = function (){
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
     final.cart = localStorage.getItem('cart')
+    if (!final.cart) {
+        alert("Il carrello è vuoto")
+        return null
+    }
     fetch("/register_order", {
         method: "POST", 
         body: JSON.stringify(final),
@@ -110,7 +114,7 @@ const SEND = function (){
             alert('L\'ordine è stato registrato con successo')
             const output = new jsPDF()
             output.text(`Intestatario: ${final.Cognome} ${final.Nome}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nId: ${res.id}\nSpesa: ${res.cost}\nCarrello: \n   -${final.cart.replace(/; /g, '\n   -')}`, 10, 10)
-            output.save('scontrino.pdf')
+            output.save(`ricevuta_${final.Cognome}_${final.Nome}`)
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
             alert(res.error)
