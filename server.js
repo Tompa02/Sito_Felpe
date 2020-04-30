@@ -15,7 +15,7 @@ const prezzi = {
 const calcola_spesa = function (arr){
     let soldi_totali = 0
     for(let i = 0; i<arr.lenght; i++){
-        soldi_totali+=arr[i][0]
+        soldi_totali+=arr[i][1]
     }
     return soldi_totali;
 }
