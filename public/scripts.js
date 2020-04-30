@@ -1,7 +1,7 @@
 let numofrow = 1
 let magliette = 0
 
-const Aggiungi = function (name, costo = 10) {
+const Aggiungi = function (name, costo = 10, section=0) {
     let row = document.createElement("div")
     let thing = document.createElement("div")
     let cost = document.createElement("div")
@@ -21,7 +21,7 @@ const Aggiungi = function (name, costo = 10) {
         let color = ""
 
         name[0] === 'F' ? taglia = document.getElementById('TagliaF').value : taglia = document.getElementById('TagliaM').value
-        name[0] === 'F' ? color = document.getElementById('trad').src : color = document.getElementById('maglia').src
+        name[0] === 'F' ? color = document.getElementById('trad_'+section).src : color = document.getElementById('maglia').src
 
         let text = document.createTextNode(name+" "+taglia+" "+GetColor(color))
         let num = document.createTextNode(costo)
@@ -70,8 +70,6 @@ const Aggiungi = function (name, costo = 10) {
         let element = document.getElementById("carrello")
         element.appendChild(row)
 
-        let color = document.getElementById('trad').src
-
         final.cart.push([name])
         numofrow+=1
         if (name === 'Borraccia') { $('#notifica_borraccia').toast('show') }
@@ -100,10 +98,6 @@ const SEND = function (){
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
     final.cart = localStorage.getItem('cart')
-    if (!final.cart) {
-        alert("Il carrello è vuoto")
-        return null
-    }
     fetch("/register_order", {
         method: "POST", 
         body: JSON.stringify(final),
@@ -123,9 +117,13 @@ const SEND = function (){
     })
 }
 
-const SAVE = function (){
+const SAVE = function (i){
+    if (!final.cart.join()) {
+        alert("Il carrello è vuoto")
+        return null
+    }
     localStorage.setItem("cart", final.cart.map(e => e.length > 1? `${e[0]}, ${e.flatMap((e,i) => i? e: "").filter(e => {if (e) return e}).join(", ")}`: e.toString() ).join("; "));
-    let but = document.getElementById("goform")
+    let but = document.getElementById("goform_"+i)
     but.href = "./form"
 }
 

@@ -22,7 +22,7 @@
           <h3 class="lead">Controlla ciò che stai comprando in fondo alla pagina e conferma cliccando sul bottone <b>Conferma Acquisto</b> qui sotto: a fine acquisto riceverai uno scontrino univoco da conservare.</h3>
           <h3 class="lead">Nel caso volessi cancellare un ordine già effettuato, clicca su <b>Cancella Ordine</b>: ti verrà richiesto di inserire l'id dell'ordine contenuto nello scontrino ricevuto al momento dell'acquisto.</h3>
           <p class="lead">Saranno aggiunti 2€ come costo di spedizione</p>
-          <a type="button" class="btn btn-danger" href="#" style="text-align: center;" onclick="SAVE()" id='goform'>Conferma Acquisto</a>	
+          <a type="button" class="btn btn-danger" href="" style="text-align: center;" onclick="SAVE(0)" id='goform_0'>Conferma Acquisto</a>	
           <a type="button" class="btn btn-danger" href="/delete_order" style="text-align: center;" id='goform_delete'>Cancella Ordine</a>	
         </div>
     </div>
@@ -48,7 +48,7 @@
                 <option>XL</option>
               </select>
               <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
-              <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -1-', 20)">Aggiungi al carrello</button>
+              <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -1-', 20, 1)">Aggiungi al carrello</button>
             </div>
           </div>
       </div>
@@ -73,7 +73,7 @@
               <option>XL</option>
             </select>
             <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -2-', 20)">Aggiungi al carrello</button>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -2-', 20, 2)">Aggiungi al carrello</button>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@
               <option>XL</option>
             </select>
             <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -3-', 20)">Aggiungi al carrello</button>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -3-', 20, 3)">Aggiungi al carrello</button>
           </div>
         </div>
       </div>
@@ -123,7 +123,7 @@
               <option>XL</option>
             </select>
             <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -4-', 20)">Aggiungi al carrello</button>
+            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -4-', 20, 4)">Aggiungi al carrello</button>
           </div>
         </div>
       </div>
@@ -178,22 +178,19 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="container" style="background-color: #f5f3f3; text-align: center; font-size: 20px;" id="carrello">
       <div class="row">
         <div class="col-9" style="font-size: 25px;">
-          Oggetto
         </div>
         <div class="col" style="font-size: 25px;">
-          Costo
         </div>
         <div class="col" style="font-size: 25px;">
         </div>
       </div>
-      
     </div>
+    <h2 style="text-align: center;"><a type="button" class="btn btn-danger" href="" style="text-align: center;" onclick="SAVE(1)" id='goform_1'>Conferma Acquisto</a></h2>
 
 
     <footer class="page-footer font-small blue pt-4">
