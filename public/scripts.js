@@ -101,10 +101,6 @@ const SEND = function (){
     final.Sezione = document.getElementById("Sezione").value
     final.Classe = document.getElementById("Classe").value
     final.cart = localStorage.getItem('cart')
-    if (final.cart){
-        alert('Il carrello è vuoto')
-        return 0
-    } 
     fetch("/register_order", {
         method: "POST", 
         body: JSON.stringify(final),

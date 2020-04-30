@@ -60,7 +60,7 @@ const verify = function(req, res, next) {
     console.log(order.cart)
     console.log(order.cart)
     if(order.Email==''||order.Nome==''||order.Cognome==''||
-        order.Indirizzo==''||order.Comune==''||order.CAP==''||order.cart){
+        order.Indirizzo==''||order.Comune==''||order.CAP==''){
             res.send({"status": 700, "error": "Controllare che tutti i campi siano validi"})
     } else {
         next()
