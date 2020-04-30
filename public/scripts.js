@@ -43,6 +43,8 @@ const Aggiungi = function (name, costo = 10) {
 
         final.cart.push([name, GetColor(color), taglia])
         numofrow+=1
+        if (name === 'Felpa Tradizionale') { $('#notifica_felpa').toast('show') }
+        else { $('#notifica_maglia').toast('show') }
     }
 
     if(name==='Borraccia' || name==="Annuario"){
@@ -75,6 +77,8 @@ const Aggiungi = function (name, costo = 10) {
 
         final.cart.push([name])
         numofrow+=1
+        if (name === 'Borraccia') { $('#notifica_borraccia').toast('show') }
+        else { $('#notifica_annuario').toast('show') }
     }
 }
 

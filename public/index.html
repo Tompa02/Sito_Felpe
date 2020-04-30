@@ -12,13 +12,12 @@
           <a class="nav-link disabled" href="#" aria-disabled="true" style="font-size:30px"><i>LICEO ARIOSTO SPALLANZANI</i></a>
         </li>
     </ul>
-    <!--se credi di poter hackerare il sito e mettere zero come paga, nel caso tu ci riesca buon per te ma verrai preso a calci, nel secondo, più probabile caso, verrai preso in giro-->
     <div class="jumbotron jumbotron-fluid" style="background:#ffa052">
         <div class="container" style="text-align: center;">
           <h1 class="display-4" >Sito per ordinare le felpe della scuola</h1>
           <h2 class="lead">Il tuo ordine verrà registrato e la felpa consegnata da un fattorino, <b>pagamento alla consegna</b></h2>
           <h3 class="lead">Controlla ciò che stai comprando in fondo alla pagina e conferma cliccando sul bottone qui sotto</h3>
-          <p class="lead">Ci saranno 2€ come costo di spedizione</p>
+          <p class="lead">Saranno aggiunti 2€ come costo di spedizione</p>
           <a type="button" class="btn btn-danger" href="#" style="text-align: center;" onclick="SAVE()" id='goform'>Conferma Acquisto</a>	
         </div>
     </div>
@@ -124,7 +123,43 @@
         </div>
     </footer>
 
-
+    <div class="toast fade" id="notifica_felpa" style="position: fixed; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+          <strong class="mr-auto"><i class="fa fa-globe"></i>Carrello</strong>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"></button>
+      </div>
+      <div class="toast-body">
+          <div>E' stata aggiunta una felpa tradizionale al carrello!</div>
+      </div>
+    </div>
+    <div class="toast fade" id="notifica_maglia" style="position: fixed; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="mr-auto"><i class="fa fa-globe"></i>Carrello</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"></button>
+      </div>
+      <div class="toast-body">
+          <div>E' stata aggiunta una maglietta al carrello!</div>
+      </div>
+    </div>
+    <div class="toast fade" id="notifica_borraccia" style="position: fixed; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="mr-auto"><i class="fa fa-globe"></i>Carrello</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"></button>
+      </div>
+      <div class="toast-body">
+          <div>E' stata aggiunta una borraccia al carrello!</div>
+      </div>
+    </div>
+    <div class="toast fade" id="notifica_annuario" style="position: fixed; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="mr-auto"><i class="fa fa-globe"></i>Carrello</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"></button>
+      </div>
+      <div class="toast-body">
+          <div>E' stato aggiunto un annuario al carrello!</div>
+      </div>
+    </div>
+  
     <script src="scripts.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
