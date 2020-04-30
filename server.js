@@ -5,11 +5,20 @@ const parser = require('body-parser')
 const server = express()
 
 const prezzi = {
-    'felpa': 20,
-    'maglia': 15,
-    'annuario': 5,
-    'borraccia' : 0
+    'Felpa Tradizionale': 20,
+    'Maglietta': 15,
+    'Annuario': 5,
+    'Borraccia' : 0
 }
+
+const calcola_spesa = function (arr){
+    let soldi_totali=0
+    for(let i=0; i<arr.length; i++){
+        soldi_totali+=prezzi[(arr[i][0])]
+    }
+    return soldi_totali
+}
+
 
 server.use(express.static(path.join(__dirname, 'public')));
 
@@ -37,7 +46,7 @@ const verify = function(req, res, next) {
 }
 
 server.post('/register_order', verify, (req, res) => {
-    const cost = 0
+    const cost = calcola_spesa(req.body.cart)
     const id = crypto.createHash('md5').update(JSON.stringify(req.body)).digest("hex")
     res.send({"status": 200, "cost": cost, "id": id})
 })
