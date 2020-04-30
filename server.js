@@ -12,6 +12,14 @@ const prezzi = {
 }
 
 
+const calcola_spesa = function (arr){
+    let soldi_totali = 0
+    for(let i = 0; i<arr.lenght; i++){
+        soldi_totali+=arr[i][0]
+    }
+    return soldi_totali;
+}
+
 server.use(express.static(path.join(__dirname, 'public')));
 
 server.use(parser.json())
@@ -29,6 +37,7 @@ const verify = function(req, res, next) {
             res.send('error')
     } else {
         order.cart=carrello
+        order.cost = calcola_spesa(order.cart)
         console.log(order)
         next()
     }
