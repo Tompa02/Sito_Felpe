@@ -182,3 +182,16 @@ const update_id = function() {
         }
     }
 }
+
+
+const delete_order = function() {
+    fetch("/delete_order_request", {
+        method: "POST", 
+        body: JSON.stringify({"id": document.getElementById("delete_id").value}),
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
+    })
+    .then(res => res.json())
+    .then(res => {
+        alert(res.msg)
+    })
+}

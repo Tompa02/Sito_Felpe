@@ -54,6 +54,11 @@ server.get('/form', (req, res) => {
     res.sendFile(__dirname + '/public/form.html');
 })
 
+server.get('/delete_order', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.sendFile(__dirname + '/public/delete_order.html');
+})
+
 server.get('*', (req, res) => {
     res.writeHead(404, {"Content-Type": "text/html"})
     res.end('<a href=\'\/\' title=\'spoiler: era questo il link che cercavi pirla\'>Forse era questo il link che cercavi?</a>');
@@ -100,6 +105,19 @@ server.post('/register_order', verify, (req, res) => {
     csvWriter.writeRecords(appends).then(() => {});
 
     res.send({"status": 200, "cost": cost, "id": id})
+})
+
+const delete_order = function(id) {
+    return true // restituisci true se sei riuscito a cancellare l'ordine, false se l'ordine non c'era
+}
+
+server.post('/delete_order_request', (req, res) => {
+    const result = delete_order(req.body.id)
+    if (result) {
+        res.send({"status": 200, "msg": "L\'ordine è stato rimosso con successo"})
+    } else {
+        res.send({"status": 700, "msg": "Non è stato trovato nessun ordine corrispondente all\'id fornito.\nControlla di aver inserito correttamente il codice fornito nello scontrino"})
+    }
 })
 
 server.listen(80)
