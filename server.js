@@ -14,7 +14,7 @@ const prezzi = {
 const calcola_spesa = function (arr){
     let soldi_totali=0
     for(let i=0; i<arr.length; i++){
-        soldi_totali+=prezzi[(arr[i][0].split(' ').join(''))]
+        soldi_totali+=prezzi[arr[i][0]]
     }
     soldi_totali+=2
     return soldi_totali
@@ -36,7 +36,7 @@ server.get('/form', (req, res) => {
 })
 
 const verify = function(req, res, next) {
-    req.body.cart = req.body.cart.split(";").map(e => e.split(", "))
+    req.body.cart = req.body.cart.split("; ").map(e => e.split(", "))
     const order = req.body
     if(order.Email==''||order.Nome==''||order.Cognome==''||
         order.Indirizzo==''||order.Comune==''||order.CAP==''){
