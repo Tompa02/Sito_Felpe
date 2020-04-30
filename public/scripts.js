@@ -109,7 +109,7 @@ const SEND = function (){
             alert('L\'ordine è stato registrato con successo')
             let scontrino = `Intestatario: ${final.Cognome} ${final.Nome}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nId: ${res.id}\nSpesa: ${res.cost}\nCarrello: ${final.cart}`
             download(scontrino, 'scontrino.txt', 'plain/text')
-            localStorage.setItem("cart", "")
+            //localStorage.setItem("cart", "")
         } else if (res.status == 700) {
             alert('C\'è stato un errore durante la registrazione dell \'ordine')
         }
