@@ -1,6 +1,4 @@
 let numofrow = 1
-let felpe = 0
-let borracce = 0
 let magliette = 0
 
 const Aggiungi = function (name, costo = 10) {
@@ -11,7 +9,6 @@ const Aggiungi = function (name, costo = 10) {
     let butt = document.createElement("button")
 
     if(name==='Felpa Tradizionale' || name==="Maglietta"){
-        felpe+=1
         row.setAttribute('class', 'row')
         row.setAttribute('id', numofrow)
         thing.setAttribute('class', 'col-9')
@@ -48,7 +45,6 @@ const Aggiungi = function (name, costo = 10) {
     }
 
     if(name==='Borraccia' || name==="Annuario"){
-        name==='Borraccia' ? borracce+=1 : borracce=borracce
         row.setAttribute('class', 'row')
         row.setAttribute('id', numofrow)
         thing.setAttribute('class', 'col-9')
@@ -135,13 +131,7 @@ const CambiaColore = function (newimage, name){
 
 const Remove = function (i){
     let torem = document.getElementById("carrello").children[i]
-    if(name==='Felpa Tradizionale'){
-        felpe-=1
-    }
-    if(name==='Borraccia'){
-        borracce-=1
-    }
-    if (i > -1) {
+    if (i-1 > -1) {
         final.cart.splice(i, 1);
     }
     document.getElementById("carrello").removeChild(torem)
