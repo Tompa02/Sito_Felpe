@@ -122,10 +122,6 @@ const SEND = function (){
 }
 
 const SAVE = function (){
-    if(!(controllo())){
-        alert("Hai preso troppe borracce")
-        return 0
-    }
     localStorage.setItem("cart", final.cart.map(e => e.length > 1? `${e[0]}, ${e.flatMap((e,i) => i? e: "").filter(e => {if (e) return e}).join(", ")}`: e.toString() ).join("; "));
     let but = document.getElementById("goform")
     but.href = "./form"
@@ -155,12 +151,6 @@ const final = {
     cart : []
 }
 
-const controllo = function (){
-    if(borracce>felpe){
-        return false
-    }
-    return true
-}
 
 const GetColor = function (color) {
     const arrcolo = ['BLACK', 'GREEN', 'WHITE', 'RED', 'GREY', 'BLUE']

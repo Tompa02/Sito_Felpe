@@ -25,8 +25,8 @@ const csvWriter = createCsvWriter({
 
 const prezzi = {
     'Felpa Tradizionale': 20,
-    'Maglietta': 15,
-    'Annuario': 5,
+    'Maglietta': 10,
+    'Annuario': 10,
     'Borraccia' : 0
 }
 
@@ -66,9 +66,14 @@ const verify = function(req, res, next) {
 }
 
 server.post('/register_order', verify, (req, res) => {
-    const cost = calcola_spesa(req.body.cart)
+    let cost = calcola_spesa(req.body.cart)
     const id = crypto.createHash('md5').update(JSON.stringify(req.body)).digest("hex")
     const check = id
+    let borr = 0
+    let felpe = 0
+    req.body.cart.forEach(e => e[0]==='Borraccia' ? borr+=1 : borr=borr)
+    req.body.cart.forEach(e => e[0]==='Felpa Tradizionale' ? felpe+=1 : borr=borr)
+    borr>felpe ? cost+=((borr-felpe)*3) : cost=cost
     const appends =[{
         nome:req.body.Nome,
         cognome:req.body.Cognome,
