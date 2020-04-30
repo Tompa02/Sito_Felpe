@@ -108,7 +108,7 @@ const SEND = function (){
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
             const output = new jsPDF()
-            output.text(`Intestatario: ${final.Cognome} ${final.Nome}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nId: ${res.id}\nSpesa: ${res.cost}\nCarrello: ${final.cart}`, 10, 10)
+            output.text(`Intestatario: ${final.Cognome} ${final.Nome}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nId: ${res.id}\nSpesa: ${res.cost}\nCarrello: \n   -${final.cart.replace('; ', '\n   -')}`, 10, 10)
             output.save('scontrino.pdf')
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
