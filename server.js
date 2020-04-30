@@ -21,10 +21,23 @@ const csvWriter = createCsvWriter({
         {id: 'importo', title: 'IMPORTO'},
         {id: 'carrello', title: 'CARRELLO'}
     ]
-});
+})
+
+const ordi = createCsvWriter({
+    path: './oggetti.csv',
+    header: [
+        {id: 'id', title: 'ID'},
+        {id: 'nome', title: 'NOME'},
+        {id: 'cognome', title: 'COGNOME'},
+        {id: 'oggetto', title: 'OGGETTO'},
+    ]
+})
 
 const prezzi = {
-    'Felpa Tradizionale': 20,
+    'Felpa Tradizionale -1-': 20,
+    'Felpa Tradizionale -2-': 20,
+    'Felpa Tradizionale -3-': 20,
+    'Felpa Tradizionale -4-': 20,
     'Maglietta': 10,
     'Annuario': 10,
     'Borraccia' : 0
@@ -101,9 +114,20 @@ server.post('/register_order', verify, (req, res) => {
         importo:cost,
         carrello:req.body.cart
     }]
-
     csvWriter.writeRecords(appends).then(() => {});
 
+    let ogg = []
+
+    req.body.cart.forEach(e =>{
+        ogg.push({
+            id : check,
+            nome : req.body.Nome,
+            cognome : req.body.Cognome,
+            oggetto : e
+        })
+    })
+    ordi.writeRecords(ogg)
+    
     res.send({"status": 200, "cost": cost, "id": id})
 })
 
