@@ -132,7 +132,7 @@ const CambiaColore = function (newimage, name){
 const Remove = function (i){
     let torem = document.getElementById("carrello").children[i]
     if (i-1 > -1) {
-        final.cart.splice(i, 1);
+        final.cart.splice(i-1, 1);
     }
     document.getElementById("carrello").removeChild(torem)
     update_id()
@@ -155,8 +155,25 @@ const GetColor = function (color) {
 
 const update_id = function() {
     const children = document.getElementById("carrello").children
+    let num_borracce = 0
+    let num_felpe = 0
+    const borracce = []
     for (let i = 1; i < children.length; i++) {
         children[i].id = i
         children[i].children[2].children[0].setAttribute('onclick', 'Remove('+i+')')
+        if (children[i].children[0].innerText === "Borraccia") {
+            children[i].children[1].innerText = "gratis"
+            num_borracce += 1
+            borracce.push(children[i].children[1])
+        }
+        if (children[i].children[0].innerText[0] === 'F') {
+            num_felpe += 1
+        }
+    }
+    let delta = num_borracce - num_felpe
+    if (delta > 0){
+        for (let y = 0; y < delta; y++) {
+            borracce[y].innerText = 3
+        }
     }
 }
