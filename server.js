@@ -4,7 +4,6 @@ const crypto = require('crypto')
 const parser = require('body-parser')
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const fs = require('fs')
-const scrubber = require('csv-scrubber')();
 const server = express()
 
 const csvWriter = createCsvWriter({
@@ -140,42 +139,47 @@ server.post('/register_order', verify, (req, res) => {
     res.send({"status": 200, "cost": cost, "id": id})
 })
 
-const delete_order = function(id) {
-    fs.readFile('ordini.csv', 'utf8', function(err, data){
-        let linesExceptFirst = data.split('\n').slice(1); //fa un array con tutte le stringhe
-        let linesArr = linesExceptFirst.map(line=>line.split(',')); //divide le righe in array diverse
-        let result = AddRowToDelete(linesArr, id)
-        if(result === 10){
-            return true
+
+function filterDeletedOrder(req, res, next) {
+    let permission = true
+    fs.readFile('ordini_rimossi.csv', 'utf8', function(err, data){
+        let lines = data.split('\n').slice(1)
+        for (let i = 0; i < lines.length; i++) {
+            if (lines[i] == req.body.id) {
+                res.send({"status": 700, "msg": "L\'ordine è già stato cancellato"})
+                permission = false
+                break
+            }
         }
-        return false
+        if (permission) {
+            next()
+        }
     })
 }
 
-server.post('/delete_order_request', (req, res) => {
-    const result = delete_order(req.body.id)
-    if (result) {
-        res.send({"status": 200, "msg": "L\'ordine è stato rimosso con successo"})
-    } else {
-        res.send({"status": 700, "msg": "Non è stato trovato nessun ordine corrispondente all\'id fornito.\nControlla di aver inserito correttamente il codice fornito nello scontrino"})
-    }
+server.post('/delete_order_request', filterDeletedOrder, (req, res) => {
+    fs.readFile('ordini.csv', 'utf8', function(err, data){
+        let linesExceptFirst = data.split('\n').slice(1); //fa un array con tutte le stringhe
+        let linesArr = linesExceptFirst.map(line=>line.split(',')); //divide le righe in array diverse
+        let result = AddRowToDelete(linesArr, req.body.id)
+        if (result) {
+            res.send({"status": 200, "msg": "L\'ordine è stato rimosso con successo"})
+        } else {
+            res.send({"status": 700, "msg": "Non è stato trovato nessun ordine corrispondente all\'id fornito.\nControlla di aver inserito correttamente il codice fornito nello scontrino"})
+        }
+    })
 })
 
 
-function AddRowToDelete(records, idel) {
+function AddRowToDelete(records, id) {
     for (let i = 0, l = records.length; i < l; i++) {
-        if(records[i]===undefined){
-            break
-        }else{
-            if (records[i][0]===idel){
-                let cancel = [{
-                    id : idel
-                }]
-                removed.writeRecords(cancel)
-                return 10;
-            }
-        }   
+        if (records[i][0]===id){
+            removed.writeRecords([{"id" : id}])
+            return true;
+        }
     }
+    return false   
 }
+
 
 server.listen(80)

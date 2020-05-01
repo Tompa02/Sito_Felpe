@@ -239,5 +239,4 @@ modules.xml
 
 # End of https://www.gitignore.io/api/node,sublimetext,visualstudiocode,webstorm+all
 
-
-ordini.csv
+*.csv
