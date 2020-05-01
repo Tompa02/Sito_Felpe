@@ -10,7 +10,7 @@
   <body style="background: #f2e4d8;">
   	<ul class="nav justify-content-center">
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" aria-disabled="true" style="font-size:30px"><i>LICEO ARIOSTO SPALLANZANI</i></a>
+          <div style="text-align: center;"><a href="https://www.liceoariostospallanzani-re.edu.it/"><img src='./Images/Logo-Spalla.png' style="width:200px; height: 150px;"></a></div>
         </li>
     </ul>
 
@@ -18,7 +18,8 @@
       <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" id="Email" placeholder="Email">
+            <input type="email" class="form-control" id="Email" placeholder="Email" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Lo scontrino e la successiva mail di conferma verranno inviati all'indirizzo fornito</small>
           </div>
           <div class="form-group col-md-4">
             <label for="inputName">Nome</label>
@@ -76,9 +77,9 @@
           </div>
       </div>
 
-      <input type='button' class="btn btn-danger" onclick="window.history.back();" value="Torna a fare acquisti"></input>
-      <input type='button' class="btn btn-success" onclick="SEND()" value="Invia ordine"></input>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#carrello" aria-expanded="false" aria-controls="carrello">Visualizza carrello</button>
+      <input type='button' class="btn btn-danger btn-sm" onclick="window.history.back();" value="Torna a fare acquisti"></input>
+      <input type='button' class="btn btn-success btn-sm" onclick="SEND()" value="Invia ordine"></input>
+      <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#carrello" aria-expanded="false" aria-controls="carrello">Visualizza carrello</button>
       <div class="collapse multi-collapse" id="carrello"></div>
     </form>
 
