@@ -42,6 +42,13 @@ const removed = createCsvWriter({
     ]
 })
 
+const confirmed = createCsvWriter({
+    path : './ordini_confermati.csv',
+    header : [
+        {id:'id', title:'ID'}
+    ]
+})
+
 const prezzi = {
     'Felpa Tradizionale -1-': 20,
     'Felpa Tradizionale -2-': 20,
@@ -61,12 +68,11 @@ const calcola_spesa = function (arr){
     return soldi_totali
 }
 
-
 server.use(express.static(path.join(__dirname, 'public')));
 
 server.use(parser.json())
 
-server.get('/', (req, res) => {
+server.get('/h', (req, res) => {
     res.setHeader('Content-Type', 'text/html');
     res.sendFile(__dirname + '/public/index.html');
 })
@@ -79,6 +85,11 @@ server.get('/form', (req, res) => {
 server.get('/delete_order', (req, res) => {
     res.setHeader('Content-Type', 'text/html');
     res.sendFile(__dirname + '/public/delete_order.html');
+})
+
+server.get('/confirm_order', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.sendFile(__dirname + '/public/confirmation.html');
 })
 
 server.get('*', (req, res) => {
@@ -146,7 +157,6 @@ server.post('/register_order', verify, (req, res) => {
     res.send({"status": 200, "cost": cost, "id": id})
 })
 
-
 function filterDeletedOrder(req, res, next) {
     let permission = true
     fs.readFile('ordini_rimossi.csv', 'utf8', function(err, data){
@@ -180,7 +190,6 @@ server.post('/delete_order_request', filterDeletedOrder, (req, res) => {
     })
 })
 
-
 function AddRowToDelete(records, id) {
     for (let i = 0, l = records.length; i < l; i++) {
         if (records[i][0]===id){
@@ -191,14 +200,27 @@ function AddRowToDelete(records, id) {
     return false   
 }
 
+function filterNonExistantOrder(req, res, next) {
+    let id_disponibili = fs.readFileSync('ordini.csv', 'utf8').split('\n').slice(1).map(line=>line.split(',')).map(line=>line[0]) // elenca gli id di tutti gli ordini
+    let id_already_confirmed = fs.readFileSync('ordini_confermati.csv', 'utf8').split('\n').slice(1)
+    if (!id_disponibili.includes(req.body.id)) {
+        res.send({"status": 700, "msg": "Non è stato trovato nessun ordine con il codice fornito"})
+    } else if (id_already_confirmed.includes(req.body.id)) {
+        res.send({"status": 700, "msg": "Il tuo ordine è già stato confermato, stai tranquillo"})
+    } else { next() }
+}
+
+server.post('/confirm_order_request', filterNonExistantOrder, (req, res) => {
+    confirmed.writeRecords([{"id": req.body.id}])
+    res.send({"status": 200, "msg": "Il tuo ordine è stato confermato con successo!"})
+})
 
 const sender = async function (scontrino) {
-
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
           user: 'felpe.las@gmail.com',
-          pass: 'ALPHAbetaCharlie30' // naturally, replace both with your real credentials or an application-specific password
+          pass: 'ALPHAbetaCharlie30'
         }
     });
 
@@ -211,20 +233,10 @@ const sender = async function (scontrino) {
         from: 'felpe.las@gmail.com',
         to: scontrino.Email,
         subject: "Ricevuta Acquisto",
-        text : `Intestatario: ${scontrino.Cognome} ${scontrino.Nome} ${scontrino.Classe}${scontrino.Sezione} ${scontrino.Sede}\nIndirizzo: ${scontrino.Indirizzo} ${scontrino.Comune} ${scontrino.CAP}\nCodice ordine: ${scontrino.id}\nSpesa: ${scontrino.cost} euro\nCarrello: \n    ${finale}`
+        text : `Intestatario: ${scontrino.Cognome} ${scontrino.Nome} ${scontrino.Classe}${scontrino.Sezione} ${scontrino.Sede}\nIndirizzo: ${scontrino.Indirizzo} ${scontrino.Comune} ${scontrino.CAP}\nCodice: ${scontrino.id}\nSpesa: ${scontrino.cost} euro\nCarrello: \n    ${finale}`
     };
 
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-    });
-
+    transporter.sendMail(mailOptions, function(error, info){});
 }
-
-
-
 
 server.listen(80)
