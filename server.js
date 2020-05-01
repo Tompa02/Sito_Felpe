@@ -4,6 +4,7 @@ const crypto = require('crypto')
 const parser = require('body-parser')
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const fs = require('fs')
+const nodemailer = require('nodemailer')
 const server = express()
 
 const csvWriter = createCsvWriter({
@@ -136,6 +137,12 @@ server.post('/register_order', verify, (req, res) => {
     })
     ordi.writeRecords(ogg)
     
+    let scontrino = req.body
+    scontrino.id = check
+    scontrino.cost = cost
+
+    sender(scontrino)
+
     res.send({"status": 200, "cost": cost, "id": id})
 })
 
@@ -183,6 +190,41 @@ function AddRowToDelete(records, id) {
     }
     return false   
 }
+
+
+const sender = async function (scontrino) {
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'felpe.las@gmail.com',
+          pass: 'ALPHAbetaCharlie30' // naturally, replace both with your real credentials or an application-specific password
+        }
+    });
+
+    let finale = ""
+    scontrino.cart.forEach(e=>{
+        finale+=(e+'\n    ')
+    })
+
+    const mailOptions = {
+        from: 'felpe.las@gmail.com',
+        to: scontrino.Email,
+        subject: "Ricevuta Acquisto",
+        text : `Intestatario: ${scontrino.Cognome} ${scontrino.Nome} ${scontrino.Classe}${scontrino.Sezione} ${scontrino.Sede}\nIndirizzo: ${scontrino.Indirizzo} ${scontrino.Comune} ${scontrino.CAP}\nCodice ordine: ${scontrino.id}\nSpesa: ${scontrino.cost} euro\nCarrello: \n    ${finale}`
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+    });
+
+}
+
+
 
 
 server.listen(80)
