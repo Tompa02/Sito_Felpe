@@ -14,7 +14,7 @@ const Aggiungi = function (name, costo = 10, section=0) {
         thing.setAttribute('class', 'col-9')
         cost.setAttribute('class', 'col')
         remover.setAttribute('class', 'col')
-        butt.setAttribute('class', 'btn btn-danger')
+        butt.setAttribute('class', 'btn btn-outline-danger btn-sm fas fa-trash-alt')
         butt.setAttribute('onclick', 'Remove('+numofrow+')')
 
         let taglia = ""
@@ -25,7 +25,7 @@ const Aggiungi = function (name, costo = 10, section=0) {
 
         let text = document.createTextNode(name+" "+taglia+" "+GetColor(color))
         let num = document.createTextNode(costo)
-        let mess= document.createTextNode("ELIMINA")
+        let mess= document.createTextNode("")
 
         butt.appendChild(mess)
         thing.appendChild(text)
@@ -51,12 +51,12 @@ const Aggiungi = function (name, costo = 10, section=0) {
         thing.setAttribute('class', 'col-9')
         cost.setAttribute('class', 'col')
         remover.setAttribute('class', 'col')
-        butt.setAttribute('class', 'btn btn-danger')
+        butt.setAttribute('class', 'btn btn-outline-danger btn-sm fas fa-trash-alt')
         butt.setAttribute('onclick', 'Remove('+numofrow+')')
 
         let text = document.createTextNode(name)
         let num = document.createTextNode(costo)
-        let mess= document.createTextNode("ELIMINA")
+        let mess= document.createTextNode("")
 
         butt.appendChild(mess)
         thing.appendChild(text)
@@ -107,9 +107,6 @@ const SEND = function (){
     .then(res => {
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
-            const output = new jsPDF()
-            output.text(`Intestatario: ${final.Cognome} ${final.Nome} ${final.Classe}${final.Sezione} ${final.Sede}\nEmail: ${final.Email}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nCodice ordine: ${res.id}\nSpesa: ${res.cost} euro\nCarrello: \n   -${final.cart.replace(/; /g, '\n   -')}`, 10, 10)
-            output.save(`ricevuta_${final.Cognome}_${final.Nome}.pdf`)
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
             alert(res.error)
@@ -124,7 +121,7 @@ const SAVE = function (i){
     }
     localStorage.setItem("cart", final.cart.map(e => e.length > 1? `${e[0]}, ${e.flatMap((e,i) => i? e: "").filter(e => {if (e) return e}).join(", ")}`: e.toString() ).join("; "));
     let but = document.getElementById("goform_"+i)
-    but.href = "./form"
+    but.href = "/form"
 }
 
 const CambiaColore = function (newimage, name){
@@ -191,5 +188,17 @@ const delete_order = function() {
     .then(res => res.json())
     .then(res => {
         alert(res.msg)
+    })
+}
+
+
+const render_carrello = function() {
+    const carrello = localStorage.getItem('cart').split("; ").map(e => e.split(", "))
+    graphic = document.getElementById('carrello')
+    carrello.forEach(val => {
+        const element = document.createElement('div');
+        element.setAttribute('class', 'card card-body')
+        element.innerHTML = val[0]
+        graphic.appendChild(element)
     })
 }
