@@ -3,11 +3,14 @@ const path = require('path')
 const crypto = require('crypto')
 const parser = require('body-parser')
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const fs = require('fs')
+const scrubber = require('csv-scrubber')();
 const server = express()
 
 const csvWriter = createCsvWriter({
     path: './ordini.csv',
     header: [
+        {id: 'id', title: 'ID'},
         {id: 'nome', title: 'NOME'},
         {id: 'cognome', title: 'COGNOME'},
         {id: 'email', title: 'EMAIL'},
@@ -17,7 +20,6 @@ const csvWriter = createCsvWriter({
         {id: 'sede', title: 'SEDE'},
         {id: 'sezione', title: 'SEZIONE'},
         {id: 'classe', title: 'CLASSE'},
-        {id: 'id', title: 'ID'},
         {id: 'importo', title: 'IMPORTO'},
         {id: 'carrello', title: 'CARRELLO'}
     ]
@@ -30,6 +32,13 @@ const ordi = createCsvWriter({
         {id: 'nome', title: 'NOME'},
         {id: 'cognome', title: 'COGNOME'},
         {id: 'oggetto', title: 'OGGETTO'},
+    ]
+})
+
+const removed = createCsvWriter({
+    path : './ordini_rimossi.csv',
+    header : [
+        {id:'id', title:'ID'}
     ]
 })
 
@@ -101,6 +110,7 @@ server.post('/register_order', verify, (req, res) => {
     req.body.cart.forEach(e => e[0]==='Felpa Tradizionale' ? felpe+=1 : borr=borr)
     borr>felpe ? cost+=((borr-felpe)*3) : cost=cost
     const appends =[{
+        id:check,
         nome:req.body.Nome,
         cognome:req.body.Cognome,
         email:req.body.Email,
@@ -110,11 +120,10 @@ server.post('/register_order', verify, (req, res) => {
         sede:req.body.Sede,
         sezione:req.body.Sezione,
         classe:req.body.Classe,
-        id:check,
         importo:cost,
         carrello:req.body.cart
     }]
-    csvWriter.writeRecords(appends).then(() => {});
+    csvWriter.writeRecords(appends)
 
     let ogg = []
 
@@ -132,7 +141,15 @@ server.post('/register_order', verify, (req, res) => {
 })
 
 const delete_order = function(id) {
-    return true // restituisci true se sei riuscito a cancellare l'ordine, false se l'ordine non c'era
+    fs.readFile('ordini.csv', 'utf8', function(err, data){
+        let linesExceptFirst = data.split('\n').slice(1); //fa un array con tutte le stringhe
+        let linesArr = linesExceptFirst.map(line=>line.split(',')); //divide le righe in array diverse
+        let result = AddRowToDelete(linesArr, id)
+        if(result === 10){
+            return true
+        }
+        return false
+    })
 }
 
 server.post('/delete_order_request', (req, res) => {
@@ -143,5 +160,22 @@ server.post('/delete_order_request', (req, res) => {
         res.send({"status": 700, "msg": "Non è stato trovato nessun ordine corrispondente all\'id fornito.\nControlla di aver inserito correttamente il codice fornito nello scontrino"})
     }
 })
+
+
+function AddRowToDelete(records, idel) {
+    for (let i = 0, l = records.length; i < l; i++) {
+        if(records[i]===undefined){
+            break
+        }else{
+            if (records[i][0]===idel){
+                let cancel = [{
+                    id : idel
+                }]
+                removed.writeRecords(cancel)
+                return 10;
+            }
+        }   
+    }
+}
 
 server.listen(80)
