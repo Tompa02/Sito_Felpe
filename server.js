@@ -143,6 +143,9 @@ server.post('/register_order', verify, (req, res) => {
 function filterDeletedOrder(req, res, next) {
     let permission = true
     fs.readFile('ordini_rimossi.csv', 'utf8', function(err, data){
+        if (data == undefined) {
+            return 0
+        }
         let lines = data.split('\n').slice(1)
         for (let i = 0; i < lines.length; i++) {
             if (lines[i] == req.body.id) {

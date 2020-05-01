@@ -108,7 +108,7 @@ const SEND = function (){
         if (res.status == 200) {
             alert('L\'ordine è stato registrato con successo')
             const output = new jsPDF()
-            output.text(`Intestatario: ${final.Cognome} ${final.Nome} ${final.Classe}${final.Sezione} ${final.Sede}\nEmail: ${final.Email}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\nId: ${res.id}\nSpesa: ${res.cost} euro\nCarrello: \n   -${final.cart.replace(/; /g, '\n   -')}`, 10, 10)
+            output.text(`Intestatario: ${final.Cognome} ${final.Nome} ${final.Classe}${final.Sezione} ${final.Sede}\nEmail: ${final.Email}\nIndirizzo: ${final.Indirizzo} ${final.Comune} ${final.CAP}\Codice ordine: ${res.id}\nSpesa: ${res.cost} euro\nCarrello: \n   -${final.cart.replace(/; /g, '\n   -')}`, 10, 10)
             output.save(`ricevuta_${final.Cognome}_${final.Nome}.pdf`)
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
