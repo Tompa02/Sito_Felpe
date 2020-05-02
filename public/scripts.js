@@ -11,11 +11,16 @@ const Aggiungi = function (name, costo = 10, section=0) {
     if(name[0 ]==='F' || name==="Maglietta"){ // controlla solo la prima lettera così funziona per tutti i tipi di felpa
         row.setAttribute('class', 'row')
         row.setAttribute('id', numofrow)
-        thing.setAttribute('class', 'col-9')
-        cost.setAttribute('class', 'col')
+        thing.setAttribute('class', 'col-7')
+        cost.setAttribute('class', 'col-3')
         remover.setAttribute('class', 'col')
         butt.setAttribute('class', 'btn btn-outline-danger btn-sm fas fa-trash-alt')
         butt.setAttribute('onclick', 'Remove('+numofrow+')')
+        if(numofrow===1){
+            row.setAttribute('style', 'border:1px solid #ffa052;')
+        }else{
+            row.setAttribute('style', 'border-bottom : 1px solid #ffa052; border-left : 1px solid #ffa052; border-right : 1px solid #ffa052;')
+        }
 
         let taglia = ""
         let color = ""
@@ -48,11 +53,16 @@ const Aggiungi = function (name, costo = 10, section=0) {
     if(name==='Borraccia' || name==="Annuario"){
         row.setAttribute('class', 'row')
         row.setAttribute('id', numofrow)
-        thing.setAttribute('class', 'col-9')
-        cost.setAttribute('class', 'col')
+        thing.setAttribute('class', 'col-7')
+        cost.setAttribute('class', 'col-3')
         remover.setAttribute('class', 'col')
         butt.setAttribute('class', 'btn btn-outline-danger btn-sm fas fa-trash-alt')
         butt.setAttribute('onclick', 'Remove('+numofrow+')')
+        if(numofrow===1){
+            row.setAttribute('style', 'border:1px solid #ffa052;')
+        }else{
+            row.setAttribute('style', 'border-bottom : 1px solid #ffa052; border-left : 1px solid #ffa052; border-right : 1px solid #ffa052;')
+        }
 
         let text = document.createTextNode(name)
         let num = document.createTextNode(costo)
@@ -161,8 +171,13 @@ const update_id = function() {
     for (let i = 1; i < children.length; i++) {
         children[i].id = i
         children[i].children[2].children[0].setAttribute('onclick', 'Remove('+i+')')
+        if(i===1){
+            children[i].setAttribute('style', 'border:1px solid #ffa052;')
+        }else{
+            children[i].setAttribute('style', 'border-bottom : 1px solid #ffa052; border-left : 1px solid #ffa052; border-right : 1px solid #ffa052;')
+        }
         if (children[i].children[0].innerText === "Borraccia") {
-            children[i].children[1].innerText = "gratis"
+            children[i].children[1].innerText = "Gratis"
             num_borracce += 1
             borracce.push(children[i].children[1])
         }
