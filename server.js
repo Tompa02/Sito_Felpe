@@ -118,7 +118,7 @@ server.post('/register_order', verify, (req, res) => {
     let borr = 0
     let felpe = 0
     req.body.cart.forEach(e => e[0]==='Borraccia' ? borr+=1 : borr=borr)
-    req.body.cart.forEach(e => e[0]==='Felpa Tradizionale' ? felpe+=1 : borr=borr)
+    req.body.cart.forEach(e => e[0][0]==='F' ? felpe+=1 : borr=borr)
     borr>felpe ? cost+=((borr-felpe)*3) : cost=cost
     const appends =[{
         id:check,
