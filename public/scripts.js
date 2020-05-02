@@ -8,7 +8,7 @@ const Aggiungi = function (name, costo = 10, section=0) {
     let remover = document.createElement("div")
     let butt = document.createElement("button")
 
-    if(name[0 ]==='F' || name==="Maglietta"){ // controlla solo la prima lettera così funziona per tutti i tipi di felpa
+    if(name[0]==='F' || name==="Maglietta"){ // controlla solo la prima lettera così funziona per tutti i tipi di felpa
         row.setAttribute('class', 'row')
         row.setAttribute('id', numofrow)
         thing.setAttribute('class', 'col-7')
@@ -210,9 +210,14 @@ const delete_order = function() {
 const render_carrello = function() {
     const carrello = localStorage.getItem('cart').split("; ").map(e => e.split(", "))
     graphic = document.getElementById('carrello')
-    carrello.forEach(val => {
+    carrello.forEach((val, i) => {
         const element = document.createElement('div');
         element.setAttribute('class', 'card card-body')
+        if(i===0){
+            element.setAttribute('style', 'border:1px solid #ffa052; margin-top: 10px;')
+        }else{
+            element.setAttribute('style', 'border-bottom : 1px solid #ffa052; border-left : 1px solid #ffa052; border-right : 1px solid #ffa052;')
+        }
         element.innerHTML = val[0]
         graphic.appendChild(element)
     })

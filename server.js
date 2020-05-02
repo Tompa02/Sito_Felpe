@@ -94,7 +94,7 @@ server.get('/confirm_order', (req, res) => {
 
 server.get('*', (req, res) => {
     res.writeHead(404, {"Content-Type": "text/html"})
-    res.end('<a href=\'\/\' title=\'spoiler: era questo il link che cercavi pirla\'>Forse era questo il link che cercavi?</a><img src="https://i.kym-cdn.com/entries/icons/original/000/032/379/Screen_Shot_2020-01-09_at_2.22.56_PM.png">');
+    res.end('<body style="background: #f2e4d8"><div style="text-align:center; font-size:30px;"><a href=\'\/\' title=\'spoiler: era questo il link che cercavi pirla\'>Forse era questo il link che cercavi?</a></div><div style="text-align:center;"><img src="https://i.kym-cdn.com/entries/icons/original/000/032/379/Screen_Shot_2020-01-09_at_2.22.56_PM.png"></div></body>');
 })
 
 const verify = function(req, res, next) {
