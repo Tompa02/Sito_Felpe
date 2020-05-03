@@ -12,6 +12,8 @@
     <ul class="nav justify-content-center">
         <li class="nav-item">
           <!-- <a class="nav-link disabled" href="#" aria-disabled="true" style="font-size:30px"><i>LICEO ARIOSTO SPALLANZANI</i></a> -->
+
+          <!--            manca l'alt nella foto -->
           <div style="text-align: center;"><a href="https://www.liceoariostospallanzani-re.edu.it/"><img src='./Images/Logo-Spalla.png' style="width:200px; height: 150px;"></a></div>
         </li>
     </ul>
@@ -33,12 +35,14 @@
             <div class="card-body">
               <h5 class="card-title">Felpa Tradizionale tipo 1</h5>
               <p class="card-text">Felpa del liceo Ariosto Spallanzani con logo e scritta sulla schiena e sigla sul petto</p>
+<!--             Potevate cosruire i bottoni da js -->
               <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/1/BLACK.jpg', 'trad_1')"></button>
               <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/1/GREY.jpg', 'trad_1')"></button>
               <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff; margin-right: 4px;" onclick="CambiaColore('./Images/1/WHITE.jpg', 'trad_1')"></button>
               <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/1/BLUE.jpg', 'trad_1')"></button>
               <button type="button" class="btn btn-primary btn-lg" style="background-color: green; margin-right: 4px;" onclick="CambiaColore('./Images/1/GREEN.jpg', 'trad_1')"></button>
               <button type="button" class="btn btn-primary btn-lg" style="background-color: red;" onclick="CambiaColore('./Images/1/RED.jpg', 'trad_1')"></button>
+<!--              L'id "TagliaF" è già stato usato-->
               <select id="TagliaF" class="form-control" style="width: 75px;  margin-top: 5px;">
                 <option selected>XS</option>
                 <option>S</option>
@@ -47,6 +51,7 @@
                 <option>XL</option>
               </select>
               <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
+<!--              si usa una sola volta l'attributo classe -->
               <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -1-', 20, 1)">Aggiungi al carrello</button>
             </div>
           </div>
@@ -54,16 +59,19 @@
 
       <div class="col mb-4">
         <div class="card" style="background:#ffa052">
+          <!--              si usa una sola volta l'attributo classe -->
           <img src="./Images/2/WHITE.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad_2" class="imgcard">
           <div class="card-body">
             <h5 class="card-title">Felpa Tradizionale tipo 2</h5>
             <p class="card-text">Felpa del liceo Ariosto Spallanzani con logo sulla schiena</p>
+<!--            potevate costruire da js i bottoni-->
             <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/2/BLACK.jpg', 'trad_2')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/2/GREY.jpg', 'trad_2')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff; margin-right: 4px;" onclick="CambiaColore('./Images/2/WHITE.jpg', 'trad_2')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/2/BLUE.jpg', 'trad_2')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: green; margin-right: 4px;" onclick="CambiaColore('./Images/2/GREEN.jpg', 'trad_2')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: red;" onclick="CambiaColore('./Images/2/RED.jpg', 'trad_2')"></button>
+<!--            l'id "TagliaF" è già stato utilizzato-->
             <select id="TagliaF" class="form-control" style="width: 75px;  margin-top: 5px;">
               <option selected>XS</option>
               <option>S</option>
@@ -72,6 +80,7 @@
               <option>XL</option>
             </select>
             <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
+<!--            si usa solo una volta l'attributo classe-->
             <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -2-', 20, 2)">Aggiungi al carrello</button>
           </div>
         </div>
@@ -79,6 +88,7 @@
 
       <div class="col mb-4">
         <div class="card" style="background:#ffa052">
+<!--          si usa una sola volta il l'attributo classe-->
           <img src="./Images/3/WHITE.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad_3" class="imgcard">
           <div class="card-body">
             <h5 class="card-title">Felpa Tradizionale tipo 3</h5>
@@ -89,6 +99,7 @@
             <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/3/BLUE.jpg', 'trad_3')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: green; margin-right: 4px;" onclick="CambiaColore('./Images/3/GREEN.jpg', 'trad_3')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: red;" onclick="CambiaColore('./Images/3/RED.jpg', 'trad_3')"></button>
+            <!--            l'id "TagliaF" è già stato utilizzato-->
             <select id="TagliaF" class="form-control" style="width: 75px;  margin-top: 5px;">
               <option selected>XS</option>
               <option>S</option>
@@ -97,6 +108,7 @@
               <option>XL</option>
             </select>
             <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
+            <!--          si usa una sola volta il l'attributo classe-->
             <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -3-', 20, 3)">Aggiungi al carrello</button>
           </div>
         </div>
@@ -104,16 +116,19 @@
 
       <div class="col mb-4">
         <div class="card" style="background:#ffa052">
+          <!--          si usa una sola volta il l'attributo classe-->
           <img src="./Images/4/WHITE.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad_4" class="imgcard">
           <div class="card-body">
             <h5 class="card-title">Felpa Tradizionale tipo 4</h5>
             <p class="card-text">Felpa del liceo Ariosto Spallanzani con sigla sul petto, logo sui gomiti e frecce sulle braccia</p>
+<!--            JS!!!-->
             <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/4/BLACK.jpg', 'trad_4')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/4/GREY.jpg', 'trad_4')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff; margin-right: 4px;" onclick="CambiaColore('./Images/4/WHITE.jpg', 'trad_4')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/4/BLUE.jpg', 'trad_4')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: green; margin-right: 4px;" onclick="CambiaColore('./Images/4/GREEN.jpg', 'trad_4')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: red;" onclick="CambiaColore('./Images/4/RED.jpg', 'trad_4')"></button>
+            <!--            l'id "TagliaF" è già stato utilizzato-->
             <select id="TagliaF" class="form-control" style="width: 75px;  margin-top: 5px;">
               <option selected>XS</option>
               <option>S</option>
@@ -122,6 +137,7 @@
               <option>XL</option>
             </select>
             <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
+<!--            classe x2!!!-->
             <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -4-', 20, 4)">Aggiungi al carrello</button>
           </div>
         </div>
@@ -133,6 +149,7 @@
           <div class="card-body">
             <h5 class="card-title">Maglietta</h5>
             <p class="card-text">Maglietta con logo, 100% cotone</p>
+<!--            JS!!!-->
             <button type="button" class="btn btn-primary btn-lg" style="background-color: black; margin-right: 4px;" onclick="CambiaColore('./Images/MAG/BLACK.jpg', 'maglia')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/MAG/GREY.jpg', 'maglia')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: #ffffff; margin-right: 4px;" onclick="CambiaColore('./Images/MAG/WHITE.jpg', 'maglia')"></button>
@@ -146,6 +163,7 @@
               <option>L</option>
               <option>XL</option>
             </select>
+<!--            classe x2!!!-->
             <p class="card-text" style="text-align: end; font-size: 30px;">10€</p>
             <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Maglietta', 10)">Aggiungi al carrello</button>
           </div>
@@ -154,12 +172,15 @@
 
       <div class="col mb-4">
         <div class="card" style="background:#ffa052">
+<!--          l'immagine non esiste -->
+<!--          id borr è già sttao usato -->
           <img src="./Images/Borraccia.jpg" class="card-img-top" alt="immagine_borraccia" id='borr'>
           <div class="card-body">
             <h5 class="card-title">Borraccia</h5>
             <p class="card-text">Borraccia personalizzata, logo bianco su borraccia nera. Per ogni felpa acquistata puoi aggiungere al carrello una borraccia in omaggio, mentre ogni pezzo extra costerà 3€.</p>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: black;"></button>
             <p class="card-text" style="text-align: end; font-size: 30px;">3€</p>
+<!--            classe x2-->
             <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Borraccia', 3)">Aggiungi al carrello</button>
           </div>
         </div>
@@ -173,6 +194,7 @@
             <p class="card-text">Annuario dell'anno scolastico 2019-2020.</p>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: green;"></button>
             <p class="card-text" style="text-align: end; font-size: 30px;">10€</p>
+<!--            classe x2 -->
             <button type="button" class="btn btn-danger" class="addCart" style="text-align: center;" onclick="Aggiungi('Annuario',10)">Aggiungi al carrello</button>
           </div>
         </div>

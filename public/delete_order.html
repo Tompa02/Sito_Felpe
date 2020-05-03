@@ -11,20 +11,22 @@
 
     <ul class="nav justify-content-center">
       <li class="nav-item">
+<!--        manca l'attribbuto alt -->
         <div style="text-align: center;"><a href="https://www.liceoariostospallanzani-re.edu.it/"><img src='./Images/Logo-Spalla.png' style="width:200px; height: 150px;"></a></div>
       </li>
     </ul>
 
     <form  style="margin : 10px; text-align: center;">
         <div class="form-group">
+<!--          la label non ha senso -->
             <label for="inputId">Inserisci il codice dell'ordine trovato sullo scontrino che hai ricevuto</label>
             <input type="text" class="form-control" id="delete_id" placeholder="sequenza alfanumerica di 32 caratteri">
         </div>
 
-        <input type='button' class="btn btn-danger" onclick="delete_order()" value="Cancella l'ordine"></input>
+        <input type='button' class="btn btn-danger" onclick="delete_order()" value="Cancella l'ordine">
     </form>
-    
-    
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
