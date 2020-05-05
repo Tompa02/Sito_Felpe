@@ -104,7 +104,7 @@ const verify = function(req, res, next) {
     req.body.cart = req.body.cart.split("; ").map(e => e.split(", "))
     const order = req.body
     if(order.Email==''||order.Nome==''||order.Cognome==''||
-        order.Indirizzo==''||order.Comune==''||order.CAP==''){
+        order.Indirizzo==''||order.Comune==''||order.CAP==''||order.Nome.length<2||order.Cognome.length<2||order.CAP.length!==5||(!(order.Email.includes('@')))){
             res.send({"status": 700, "error": "Controllare che tutti i campi siano validi"})
     } else {
         next()
