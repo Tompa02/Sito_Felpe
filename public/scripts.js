@@ -116,7 +116,7 @@ const SEND = function (){
     .then(res => res.json())
     .then(res => {
         if (res.status == 200) {
-            alert('L\'ordine è stato registrato con successo')
+            alert('L\'ordine è stato registrato con successo.\nRiceverai una mail all\'indirizzo fornito con incluso un codice da conservare: ti servirà per confermare in seguito l\'acquisto o nel caso volessi cancellare il tuo ordine.')
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
             alert(res.error)
