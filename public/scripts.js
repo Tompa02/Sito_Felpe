@@ -1,5 +1,6 @@
 let numofrow = 1
 let magliette = 0
+let is_order_done = false
 
 const Aggiungi = function (name, costo = 10, section=0) {
     let row = document.createElement("div")
@@ -116,21 +117,23 @@ const SEND = function (){
     .then(res => res.json())
     .then(res => {
         if (res.status == 200) {
-            alert('L\'ordine è stato registrato con successo.\nRiceverai una mail all\'indirizzo fornito con incluso un codice da conservare: ti servirà per confermare in seguito l\'acquisto o nel caso volessi cancellare il tuo ordine.')
+            create_alert('L\'ordine è stato registrato con successo.\nRiceverai una mail all\'indirizzo fornito con incluso un codice da conservare: ti servirà per confermare in seguito l\'acquisto o nel caso volessi cancellare il tuo ordine.', 'success')
+            is_order_done = true
             localStorage.setItem("cart", "")
         } else if (res.status == 700) {
-            alert(res.error)
+            create_alert(res.error, 'danger')
         }
     })
 }
 
-const SAVE = function (i){
-    if (!final.cart.join()) {
-        alert("Il carrello è vuoto")
+const SAVE = function (){
+    let but = document.getElementById("goform")
+    but.removeAttribute('href')
+    if (!final.cart.join() || !final.cart) {
+        create_alert("Il carrello è vuoto", 'warning')
         return null
     }
     localStorage.setItem("cart", final.cart.map(e => e.length > 1? `${e[0]}, ${e.flatMap((e,i) => i? e: "").filter(e => {if (e) return e}).join(", ")}`: e.toString() ).join("; "));
-    let but = document.getElementById("goform_"+i)
     but.href = "/form"
 }
 
@@ -202,7 +205,7 @@ const delete_order = function() {
     })
     .then(res => res.json())
     .then(res => {
-        alert(res.msg)
+        create_alert(res.msg, 'info')
     })
 }
 
@@ -221,4 +224,30 @@ const render_carrello = function() {
         element.innerHTML = val[0]
         graphic.appendChild(element)
     })
+}
+
+
+const create_alert = function(text, type) {
+    let alert = null
+    const root_div = document.getElementById('alert_root')
+    ready_alerts = root_div.children
+
+    for (let i = 0; i < ready_alerts.length; i++) {
+        if (ready_alerts[i].value === text) {
+            alert = ready_alerts[i]
+            break
+        }
+    }
+
+    if (!alert) {
+        const alert = document.createElement("div")
+        alert.className = "alert alert-" + type + " alert-dismissible fade show"
+        alert.setAttribute('style', 'position: fixed; top: 0; right: 0;')
+        alert.setAttribute("value", text)
+        alert.innerHTML = text + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>'
+        root_div.appendChild(alert)
+    } else {
+        alert.alert()
+    }
+    
 }

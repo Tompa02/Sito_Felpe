@@ -4,3 +4,14 @@ footer {
     height: 20px;
     margin-top: 300px;
 }
+
+.alert {
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 5% !important;
+    width: 50%;
+    z-index: 1;
+  }
