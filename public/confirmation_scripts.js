@@ -6,6 +6,6 @@ const confirm_order = function() {
     })
     .then(res => res.json())
     .then(res => {
-        alert(res.msg)
+        create_alert(res.msg, 'info')
     })
 }

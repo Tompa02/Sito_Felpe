@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <title>Felpe Ariosto Spallanzani</title>
   </head>
   <body style="background: #f2e4d8">
@@ -134,11 +135,10 @@
         </div>
       </div>
     </div>
-    <h2 style="text-align: center;"><a type="button" class="btn btn-danger" href="" style="text-align: center;" onclick="SAVE(0)" id='goform_0'>Conferma Acquisto</a></h2>
-
+    <h2 style="text-align: center;"><a type="button" class="btn btn-danger" style="text-align: center;" onclick="SAVE()" id='goform' href="">Conferma Acquisto</a></h2>
 
     <footer class="page-footer font-small blue pt-4">
-      <div class="footer-copyright text-center py-3">Fatto da Tommaso Pagliani, Federico Pessina, Simone Pucci, Andrea Braglia:
+      <div class="footer-copyright text-center py-3">Tommaso Pagliani, Federico Pessina, Simone Pucci, Andrea Braglia -
           <a href="https://www.liceoariostospallanzani-re.edu.it/"> Liceo Ariosto Spallanzani</a>
         </div>
     </footer>
@@ -179,6 +179,8 @@
           <div>E' stato aggiunto un annuario al carrello!</div>
       </div>
     </div>
+
+    <div id="alert_root"></div>
   
     <script>localStorage.setItem("cart", "")</script>
     <script src="scripts.js"></script>
