@@ -18,9 +18,8 @@
     <div class="jumbotron jumbotron-fluid" style="background:#ffa052">
         <div class="container" style="text-align: center;">
           <h1 class="display-4" >Ordina gli accessori della tua scuola</h1>
-          <h2 class="lead">Il tuo ordine verrà registrato e consegnato da un fattorino dell'azienda fornitrice. <b>Pagamento alla consegna</b>.</h2>
-          <h3 class="lead">Controlla ciò che stai comprando e conferma cliccando sul bottone <b>Conferma Acquisto</b> in fondo alla pagina: a fine acquisto riceverai uno scontrino univoco da conservare.</h3>
-          <h3 class="lead">Nel caso volessi cancellare un ordine già effettuato, clicca su <b>Cancella Ordine</b>: ti verrà richiesto di inserire l'id dell'ordine contenuto nello scontrino ricevuto al momento dell'acquisto.</h3>
+          <h3 class="lead">Controlla ciò che stai comprando e conferma cliccando sul bottone <b>Conferma Acquisto</b> in fondo alla pagina: a fine acquisto riceverai una info sul tuo ordine univoca da conservare.</h3>
+          <h3 class="lead">Nel caso volessi cancellare un ordine già effettuato, clicca su <b>Cancella Ordine</b>: ti verrà richiesto di inserire l'id dell'ordine contenuto nelle info ricevute al momento dell'acquisto.</h3>
           <p class="lead"><b>Saranno aggiunti 2€ come costo di spedizione</b></p>
           <a type="button" class="btn btn-danger" href="/delete_order" style="text-align: center;" id='goform_delete'>Cancella Ordine</a>	
         </div>
@@ -52,29 +51,9 @@
 
       <div class="col mb-4">
         <div class="card" style="background:#ffa052">
-          <img src="./Images/2/GREY.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad_2" class="imgcard">
-          <div class="card-body">
-            <h5 class="card-title">Felpa Tradizionale tipo 2</h5>
-            <p class="card-text">Felpa del liceo Ariosto Spallanzani con logo sulla schiena</p>
-            <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/2/GREY.jpg', 'trad_2')"></button>
-            <select id="TagliaF" class="form-control" style="width: 75px;  margin-top: 5px;">
-              <option selected>XS</option>
-              <option>S</option>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
-            </select>
-            <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -2-', 20, 2)">Aggiungi al carrello</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="card" style="background:#ffa052">
           <img src="./Images/3/RED.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad_3" class="imgcard">
           <div class="card-body">
-            <h5 class="card-title">Felpa Tradizionale tipo 3</h5>
+            <h5 class="card-title">Felpa Tradizionale tipo 2</h5>
             <p class="card-text">Felpa del liceo Ariosto Spallanzani con sigla, logo sulla schiena e frecce sui gomiti</p>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/3/GREY.jpg', 'trad_3')"></button>
             <button type="button" class="btn btn-primary btn-lg" style="background-color: blue; margin-right: 4px;" onclick="CambiaColore('./Images/3/BLUE.jpg', 'trad_3')"></button>
@@ -93,26 +72,6 @@
         </div>
       </div>
 
-      <div class="col mb-4">
-        <div class="card" style="background:#ffa052">
-          <img src="./Images/4/GREY.jpg" class="card-img-top" alt="immagine_felpa_tradizionale" id="trad_4" class="imgcard">
-          <div class="card-body">
-            <h5 class="card-title">Felpa Tradizionale tipo 4</h5>
-            <p class="card-text">Felpa del liceo Ariosto Spallanzani con sigla sul petto, logo sui gomiti e frecce sulle braccia</p>
-            <button type="button" class="btn btn-primary btn-lg" style="background-color: grey; margin-right: 4px;" onclick="CambiaColore('./Images/4/GREY.jpg', 'trad_4')"></button>
-            <select id="TagliaF" class="form-control" style="width: 75px;  margin-top: 5px;">
-              <option selected>XS</option>
-              <option>S</option>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
-            </select>
-            <p class="card-text" style="text-align: end; font-size: 30px;">20€</p>
-            <button type="button" class="btn btn-danger" class="addCart" style="text-align:center;" onclick="Aggiungi('Felpa Tradizionale -4-', 20, 4)">Aggiungi al carrello</button>
-          </div>
-        </div>
-      </div>
-      
       <div class="col mb-4">
         <div class="card" style="background:#ffa052">
           <img src="./Images/MAG/WHITE.png" class="card-img-top" alt="immagine_felpa_tradizionale" id="maglia">

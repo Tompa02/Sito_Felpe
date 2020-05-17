@@ -232,7 +232,7 @@ const sender = async function (scontrino) {
     const mailOptions = {
         from: 'felpe.las@gmail.com',
         to: scontrino.Email,
-        subject: "Ricevuta Acquisto",
+        subject: "INFO Acquisto",
         text : `Intestatario: ${scontrino.Cognome} ${scontrino.Nome} ${scontrino.Classe}${scontrino.Sezione} ${scontrino.Sede}\nIndirizzo: ${scontrino.Indirizzo} ${scontrino.Comune} ${scontrino.CAP}\nCodice: ${scontrino.id}\nSpesa: ${scontrino.cost} euro\nCarrello: \n    ${finale}`
     };
 
