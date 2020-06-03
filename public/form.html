@@ -9,52 +9,60 @@
   </head>
   <body style="background: #f2e4d8;">
   	<ul class="nav justify-content-center">
-        <li class="nav-item">
-          <div style="text-align: center;"><a href="https://www.liceoariostospallanzani-re.edu.it/"><img src='./Images/Logo-Spalla.png' style="width:200px; height: 150px;"></a></div>
-        </li>
+      <li class="nav-item">
+        <div style="text-align: center;">
+          <a href="https://www.liceoariostospallanzani-re.edu.it/">
+            <img src='./Images/Logo-Spalla.png' style="width:200px; height: 150px;" alt="logo">
+          </a>
+        </div>
+      </li>
     </ul>
 
     <form  style="margin : 10px; text-align: center; font-size: 20px;">
       <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" id="Email" placeholder="Email" aria-describedby="emailHelp">
-            <small id="emailHelp" class="form-text text-muted" style="font-size: 15px;">Lo scontrino e la successiva mail di conferma verranno inviati all'indirizzo fornito</small>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputName">Nome</label>
-            <input type="text" class="form-control" id="Nome" placeholder="Nome">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputCognome">Cognome</label>
-            <input type="text" class="form-control" id="Cognome" placeholder="Cognome">
-          </div>
-      </div>
-      <div class="form-row">
-          <div class="form-group col-md-4">
-          <label for="inputAddress">Indirizzo</label>    
-            <input type="text" class="form-control" id="Indirizzo" placeholder="Indirizzo">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputAddress">Comune</label>    
-            <input type="text" class="form-control" id="Comune" placeholder="Comune">
+        <div class="form-group col-md-4">
+          <label for="Email">Email</label>
+          <input type="email" class="form-control" id="Email" placeholder="Email" aria-describedby="emailHelp" />
+          <small id="emailHelp" class="form-text text-muted" style="font-size: 15px;">Lo scontrino e la successiva mail di conferma verranno inviati all'indirizzo fornito</small>
+        </div>
 
-          </div>
+        <div class="form-group col-md-4">
+          <label for="Nome">Nome</label>
+          <input type="text" class="form-control" id="Nome" placeholder="Nome">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="Cognome">Cognome</label>
+          <input type="text" class="form-control" id="Cognome" placeholder="Cognome">
+        </div>
+      </div>
+
+      <div class="form-row">
           <div class="form-group col-md-4">
-            <label for="inputAddress">CAP</label>    
-              <input type="text" class="form-control" id="CAP" placeholder="CAP">
+          <label for="Indirizzo">Indirizzo</label>
+            <input type="text" class="form-control" id="Indirizzo" placeholder="Indirizzo" />
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="Comune">Comune</label>
+            <input type="text" class="form-control" id="Comune" placeholder="Comune" />
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="CAP">CAP</label>
+              <input type="text" class="form-control" id="CAP" placeholder="CAP" />
           </div>
       </div>
       <div class="form-row">
           <div class="form-group col-md-4">
-            <label for="inputSede">Sede</label>
+            <label for="Sede">Sede</label>
             <select id="Sede" class="form-control">
               <option>classico</option>
               <option selected>scientifico</option>
             </select>
           </div>
           <div class="form-group col-md-4">
-            <label for="inputSezione">Sezione</label>
+            <label for="Sezione">Sezione</label>
             <select id="Sezione" class="form-control">
               <option>A</option>
               <option>B</option>
@@ -67,7 +75,7 @@
             </select>
           </div>
           <div class="form-group col-md-4">
-            <label for="inputSezione">Classe</label>
+            <label for="Classe">Classe</label>
             <select id="Classe" class="form-control">
               <option selected>1</option>
               <option>2</option>
@@ -78,8 +86,8 @@
           </div>
       </div>
 
-    <input type='button' class="btn btn-danger btn-sm" onclick="is_order_done ? window.location.href = '/' : window.history.back()" value="Torna a fare acquisti" id="go_back"></input>
-      <input type='button' class="btn btn-success btn-sm" onclick="SEND()" value="Invia ordine"></input>
+    <input type='button' class="btn btn-danger btn-sm" onclick="is_order_done ? window.location.href = '/' : window.history.back()" value="Torna a fare acquisti" id="go_back" />
+      <input type='button' class="btn btn-success btn-sm" onclick="SEND()" value="Invia ordine" />
       <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#carrello" aria-expanded="false" aria-controls="carrello">Visualizza carrello</button>
       <div class="collapse multi-collapse" id="carrello"></div>
     </form>
