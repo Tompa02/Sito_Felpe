@@ -216,6 +216,8 @@ function filterNonExistantOrder(req, res, next) {
     let id_already_confirmed = fs.readFileSync('ordini_confermati.csv', 'utf8').split('\n').slice(1)
     if (id_already_confirmed.includes(req.body.id)) {
         res.send({"status": 700, "msg": "Il tuo ordine è già stato confermato, stai tranquillo"})
+    } else if (req.body.id.length < 32 || req.body.id.length > 32) {
+        res.send({"status": 700, "msg": "Errore nella conferma dell'ordine"})
     } else { next() }
 }
 
