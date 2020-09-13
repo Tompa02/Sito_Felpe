@@ -213,11 +213,8 @@ function AddRowToDelete(records, id) {
 }
 
 function filterNonExistantOrder(req, res, next) {
-    let id_disponibili = fs.readFileSync('ordini.csv', 'utf8').split('\n').slice(1).map(line=>line.split(',')).map(line=>line[0]) // elenca gli id di tutti gli ordini
     let id_already_confirmed = fs.readFileSync('ordini_confermati.csv', 'utf8').split('\n').slice(1)
-    if (!id_disponibili.includes(req.body.id)) {
-        res.send({"status": 700, "msg": "Non è stato trovato nessun ordine con il codice fornito"})
-    } else if (id_already_confirmed.includes(req.body.id)) {
+    if (id_already_confirmed.includes(req.body.id)) {
         res.send({"status": 700, "msg": "Il tuo ordine è già stato confermato, stai tranquillo"})
     } else { next() }
 }
